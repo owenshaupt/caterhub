@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_24_220702) do
+ActiveRecord::Schema.define(version: 2019_11_24_223041) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,19 @@ ActiveRecord::Schema.define(version: 2019_11_24_220702) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["name", "company_id"], name: "index_menu_items_on_name_and_company_id", unique: true
     t.index ["name"], name: "index_menu_items_on_name"
+  end
+
+  create_table "modifiers", force: :cascade do |t|
+    t.string "name"
+    t.float "price"
+    t.integer "required_notice"
+    t.integer "company_id"
+    t.integer "item_ids", array: true
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_modifiers_on_company_id"
+    t.index ["item_ids"], name: "index_modifiers_on_item_ids"
+    t.index ["name", "company_id"], name: "index_modifiers_on_name_and_company_id", unique: true
   end
 
   create_table "users", force: :cascade do |t|
