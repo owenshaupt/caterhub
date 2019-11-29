@@ -901,3 +901,287 @@ Processing by Api::SessionsController#create as JSON
 Completed 200 OK in 448ms (Views: 0.5ms | ActiveRecord: 15.1ms | Allocations: 8368)
 
 
+Started GET "/" for ::1 at 2019-11-26 14:38:59 -0800
+
+NameError - uninitialized constant StaticPagesController:
+
+Started POST "/__better_errors/23bbf7486b841c3e/variables" for ::1 at 2019-11-26 14:39:00 -0800
+Started GET "/" for ::1 at 2019-11-26 14:39:41 -0800
+Processing by StaticPagesController#root as HTML
+Completed 406 Not Acceptable in 21ms (ActiveRecord: 0.0ms | Allocations: 2419)
+
+
+
+ActionController::MissingExactTemplate - StaticPagesController#root is missing a template for request formats: text/html:
+
+Started POST "/__better_errors/82654476b9135483/variables" for ::1 at 2019-11-26 14:39:42 -0800
+Started GET "/" for ::1 at 2019-11-26 14:42:54 -0800
+Processing by StaticPagesController#root as HTML
+Completed 406 Not Acceptable in 8ms (ActiveRecord: 0.0ms | Allocations: 1086)
+
+
+
+ActionController::MissingExactTemplate - StaticPagesController#root is missing a template for request formats: text/html:
+
+Started POST "/__better_errors/ad5cb734e65982aa/variables" for ::1 at 2019-11-26 14:42:56 -0800
+Started GET "/" for ::1 at 2019-11-26 14:48:15 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (Duration: 6.7ms | Allocations: 441)
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in /Users/owenhaupt/Desktop/caterhub/public/packs
+[Webpacker] Hash: 6cb8b493d60718f25c41
+Version: webpack 4.41.2
+Time: 7679ms
+Built at: 11/26/2019 2:48:27 PM
+                                     Asset       Size       Chunks                         Chunk Names
+    js/application-c3596f3a1d609d2c9648.js    124 KiB  application  [emitted] [immutable]  application
+js/application-c3596f3a1d609d2c9648.js.map    139 KiB  application  [emitted] [dev]        application
+                             manifest.json  364 bytes               [emitted]              
+Entrypoint application = js/application-c3596f3a1d609d2c9648.js js/application-c3596f3a1d609d2c9648.js.map
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/packs/application.js] 858 bytes {application} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} [built]
+    + 3 hidden modules
+
+Completed 200 OK in 12202ms (Views: 12174.7ms | ActiveRecord: 0.0ms | Allocations: 47820)
+
+
+Started GET "/" for ::1 at 2019-11-26 14:48:48 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (Duration: 1.1ms | Allocations: 152)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 32ms (Views: 29.2ms | ActiveRecord: 0.0ms | Allocations: 7003)
+
+
+Started GET "/" for ::1 at 2019-11-26 14:49:05 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (Duration: 0.2ms | Allocations: 9)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 41ms (Views: 38.2ms | ActiveRecord: 0.0ms | Allocations: 5924)
+
+
+Started GET "/" for ::1 at 2019-11-26 14:51:55 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (Duration: 1.5ms | Allocations: 150)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 29ms (Views: 26.7ms | ActiveRecord: 0.0ms | Allocations: 6997)
+
+
+Started GET "/" for ::1 at 2019-11-26 14:52:08 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (Duration: 0.1ms | Allocations: 9)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 36ms (Views: 34.2ms | ActiveRecord: 0.0ms | Allocations: 5921)
+
+
+Started GET "/" for ::1 at 2019-11-26 14:53:19 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (Duration: 0.1ms | Allocations: 9)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 37ms (Views: 35.5ms | ActiveRecord: 0.0ms | Allocations: 5916)
+
+
+Started GET "/" for ::1 at 2019-11-26 14:53:22 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (Duration: 0.1ms | Allocations: 9)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 42ms (Views: 41.1ms | ActiveRecord: 0.0ms | Allocations: 5928)
+
+
+Started GET "/" for ::1 at 2019-11-26 14:53:23 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (Duration: 0.1ms | Allocations: 8)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 25ms (Views: 24.1ms | ActiveRecord: 0.0ms | Allocations: 5925)
+
+
+Started GET "/" for ::1 at 2019-11-26 14:53:26 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (Duration: 0.1ms | Allocations: 9)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 48ms (Views: 46.3ms | ActiveRecord: 0.0ms | Allocations: 5925)
+
+
+Started GET "/" for ::1 at 2019-11-26 14:53:28 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (Duration: 0.1ms | Allocations: 8)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 34ms (Views: 30.3ms | ActiveRecord: 0.0ms | Allocations: 5920)
+
+
+Started GET "/" for ::1 at 2019-11-26 14:59:17 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (Duration: 2.1ms | Allocations: 155)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 53ms (Views: 44.8ms | ActiveRecord: 0.0ms | Allocations: 7009)
+
+
+Started GET "/" for ::1 at 2019-11-26 15:05:27 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (Duration: 0.3ms | Allocations: 9)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 31ms (Views: 27.7ms | ActiveRecord: 0.0ms | Allocations: 5922)
+
+
+Started GET "/" for ::1 at 2019-11-26 15:07:50 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (Duration: 0.1ms | Allocations: 8)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 35ms (Views: 33.1ms | ActiveRecord: 0.0ms | Allocations: 5921)
+
+
+Started GET "/" for ::1 at 2019-11-26 15:17:32 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (Duration: 6.3ms | Allocations: 150)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 63ms (Views: 60.8ms | ActiveRecord: 0.0ms | Allocations: 7000)
+
+
+Started GET "/" for ::1 at 2019-11-26 17:09:39 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (Duration: 1.0ms | Allocations: 9)
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in /Users/owenhaupt/Desktop/caterhub/public/packs
+[Webpacker] Hash: 6cb8b493d60718f25c41
+Version: webpack 4.41.2
+Time: 2549ms
+Built at: 11/26/2019 5:09:46 PM
+                                     Asset       Size       Chunks                         Chunk Names
+    js/application-c3596f3a1d609d2c9648.js    124 KiB  application  [emitted] [immutable]  application
+js/application-c3596f3a1d609d2c9648.js.map    139 KiB  application  [emitted] [dev]        application
+                             manifest.json  364 bytes               [emitted]              
+Entrypoint application = js/application-c3596f3a1d609d2c9648.js js/application-c3596f3a1d609d2c9648.js.map
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/packs/application.js] 858 bytes {application} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} [built]
+    + 3 hidden modules
+
+Completed 200 OK in 7078ms (Views: 7027.9ms | ActiveRecord: 0.0ms | Allocations: 8064)
+
+
+Started GET "/" for ::1 at 2019-11-26 17:09:53 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (Duration: 0.2ms | Allocations: 8)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 154ms (Views: 147.5ms | ActiveRecord: 0.0ms | Allocations: 5919)
+
+
+Started GET "/" for ::1 at 2019-11-26 17:09:55 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (Duration: 0.7ms | Allocations: 8)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 90ms (Views: 87.8ms | ActiveRecord: 0.0ms | Allocations: 5916)
+
+
+Started GET "/" for ::1 at 2019-11-26 17:10:54 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (Duration: 0.1ms | Allocations: 8)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 108ms (Views: 102.7ms | ActiveRecord: 0.0ms | Allocations: 5919)
+
+
+Started GET "/" for ::1 at 2019-11-27 09:50:30 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (Duration: 1.1ms | Allocations: 8)
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in /Users/owenhaupt/Desktop/caterhub/public/packs
+[Webpacker] Hash: 6cb8b493d60718f25c41
+Version: webpack 4.41.2
+Time: 1463ms
+Built at: 11/27/2019 9:50:36 AM
+                                     Asset       Size       Chunks                         Chunk Names
+    js/application-c3596f3a1d609d2c9648.js    124 KiB  application  [emitted] [immutable]  application
+js/application-c3596f3a1d609d2c9648.js.map    139 KiB  application  [emitted] [dev]        application
+                             manifest.json  364 bytes               [emitted]              
+Entrypoint application = js/application-c3596f3a1d609d2c9648.js js/application-c3596f3a1d609d2c9648.js.map
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/packs/application.js] 858 bytes {application} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} [built]
+    + 3 hidden modules
+
+Completed 200 OK in 5501ms (Views: 5470.1ms | ActiveRecord: 0.0ms | Allocations: 8057)
+
+
+Started GET "/" for ::1 at 2019-11-27 09:51:14 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (Duration: 1.0ms | Allocations: 8)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 190ms (Views: 162.6ms | ActiveRecord: 0.0ms | Allocations: 5921)
+
+
+Started GET "/" for ::1 at 2019-11-27 10:02:20 -0800
+  [1m[35m (6.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (Duration: 1.9ms | Allocations: 443)
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in /Users/owenhaupt/Desktop/caterhub/public/packs
+[Webpacker] Hash: 6cb8b493d60718f25c41
+Version: webpack 4.41.2
+Time: 1167ms
+Built at: 11/27/2019 10:02:24 AM
+                                     Asset       Size       Chunks                         Chunk Names
+    js/application-c3596f3a1d609d2c9648.js    124 KiB  application  [emitted] [immutable]  application
+js/application-c3596f3a1d609d2c9648.js.map    139 KiB  application  [emitted] [dev]        application
+                             manifest.json  364 bytes               [emitted]              
+Entrypoint application = js/application-c3596f3a1d609d2c9648.js js/application-c3596f3a1d609d2c9648.js.map
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/packs/application.js] 858 bytes {application} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} [built]
+    + 3 hidden modules
+
+Completed 200 OK in 4143ms (Views: 4128.1ms | ActiveRecord: 0.0ms | Allocations: 52998)
+
+
+Started GET "/" for ::1 at 2019-11-27 10:03:49 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (Duration: 0.2ms | Allocations: 9)
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in /Users/owenhaupt/Desktop/caterhub/public/packs
+[Webpacker] Hash: b6529d81940be8993160
+Version: webpack 4.41.2
+Time: 814ms
+Built at: 11/27/2019 10:03:52 AM
+                                     Asset       Size       Chunks                         Chunk Names
+    js/application-3967d98beb48dc42d226.js   4.61 KiB  application  [emitted] [immutable]  application
+js/application-3967d98beb48dc42d226.js.map   4.38 KiB  application  [emitted] [dev]        application
+                             manifest.json  364 bytes               [emitted]              
+Entrypoint application = js/application-3967d98beb48dc42d226.js js/application-3967d98beb48dc42d226.js.map
+[./app/javascript/packs/application.js] 731 bytes {application} [built]
+
+Completed 200 OK in 3206ms (Views: 3204.6ms | ActiveRecord: 0.0ms | Allocations: 8274)
+
+
+Started GET "/" for ::1 at 2019-11-27 10:06:40 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (Duration: 0.2ms | Allocations: 9)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 28ms (Views: 25.2ms | ActiveRecord: 0.0ms | Allocations: 6111)
+
+
