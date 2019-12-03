@@ -9,7 +9,7 @@ gem 'rails', '~> 5.2.3'
 # gem 'sqlite3'
 
 # Use postgres as the database for Active Record
-gem 'pg'
+gem 'pg', '>= 0.18', '< 2.0'
 
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
@@ -27,13 +27,14 @@ gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
 
 gem 'better_errors'
 gem 'binding_of_caller'
 gem 'pry-rails'
 gem 'annotate'
 gem 'jquery-rails'
+gem 'rb-readline'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
