@@ -1,4 +1,4 @@
-export const signup = user => {
+export const signup = userData => {
   return axios({
     method: "post",
     url: "/api/users",
