@@ -13,5 +13,31 @@
 //= require rails-ujs
 //= require activestorage
 //= require_tree .
-//= require jquery
-//= require jquery_ujs
+
+/* below are working axios http requests! */
+
+/*
+  axios({
+    method: 'delete',
+    url: '/api/session'
+  }).then(res => {
+      console.log(res.data);
+    }).catch(res => {
+    console.log(res.response.data);
+  })
+*/
+
+/*
+  axios({
+    method: 'post',
+    url: '/api/session',
+    data: {
+      email: '123@123.123,
+      password: '123123'
+    }
+  }).then(res => {
+      console.log(res.data);
+    }).catch(res => {
+    console.log(res.response.data);
+  })
+*/
