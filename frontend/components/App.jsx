@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Switch, Link } from "react-router-dom";
 import GreetingContainer from "./greeting/greeting_container";
-import LoginForm from "./session/login_form_container";
+import LoginForm from "./session/login_form";
 import { AuthRoute } from "../util/route_util";
 
 const App = () => (
