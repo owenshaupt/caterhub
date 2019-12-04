@@ -6,14 +6,7 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 
 export default function LoginForm(props) {
-  // const session = useSelector(state => state.session.id);
   const dispatch = useDispatch();
-
-  // const handleLogout = e => {
-  //   console.log("hitting handleLogout");
-  //   e.preventDefault();
-  //   dispatch({ type: LOGOUT_CURRENT_USER });
-  // };
 
   return (
     <>
