@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
-// import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-// import { LOGOUT_CURRENT_USER } from "../../actions/session_actions";
+import { useSelector, useDispatch } from "react-redux";
+import { login } from "../../actions/session_actions";
 import { Formik } from "formik";
 import * as Yup from "yup";
 
 export default function LoginForm(props) {
   // const session = useSelector(state => state.session.id);
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   // const handleLogout = e => {
   //   console.log("hitting handleLogout");
@@ -21,14 +21,16 @@ export default function LoginForm(props) {
         initialValues={{ email: "", password: "" }}
         validationSchema={Yup.object({
           email: Yup.string()
-            .email("Invalid email address")
+            // THIS COMMENTED OUT FOR TESTING 123@123.123
+            // .email("Invalid email address")
             .required("Required"),
           password: Yup.string().required("Required")
         })}
         onSubmit={(values, actions) => {
-          // change this for actual login form
-          alert(JSON.stringify(values, null, 2));
-          actions.setSubmitting(false); // not required for async functions, will auto set to false in that case
+          dispatch(login(values)).then(() => {
+            actions.setSubmitting(false); // not required for async functions, will auto set to false in that case
+            // push new page to history to redirect
+          });
         }}
       >
         {formik => (
@@ -37,10 +39,7 @@ export default function LoginForm(props) {
             <input
               name='email'
               autoComplete='email'
-              // getFieldProps shorthands onChange, onBlur, value, and checked:
-              //  => onChange={formik.handleChange}
-              //  => onBlur={formik.handleBlur}
-              //  => value={formik.values.email}
+              // formik.getFieldProps shorthands onChange, onBlur, value, and checked:
               {...formik.getFieldProps("email")}
             />
             {formik.touched.email && formik.errors.email ? (
@@ -61,19 +60,9 @@ export default function LoginForm(props) {
             <button type='submit' disabled={formik.isSubmitting}>
               Login
             </button>
-            {/* below is material design button start for future styling */}
-            {/* <button
-              className='mdc-button'
-              type='submit'
-              disabled={formik.isSubmitting}
-            >
-              <div className='mdc-button__ripple'></div>
-              <span className='mdc-button__label'>Login</span>
-            </button> */}
           </form>
         )}
       </Formik>
-      <h3>end of formik</h3>
     </>
   );
 }
