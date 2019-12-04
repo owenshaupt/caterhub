@@ -5,6 +5,7 @@ import { logout } from "../../actions/session_actions";
 
 export default function Greeting(props) {
   const user = useSelector(state => state.entities.users[state.session.id]);
+  const dispatch = useDispatch();
 
   const handleLogout = e => {
     e.preventDefault();
@@ -23,6 +24,7 @@ export default function Greeting(props) {
       <div>
         <h3>Nobody's home...</h3>
         <Link to='/signup'>Signup</Link>
+        <br/>
         <Link to='/login'>Login</Link>
       </div>
     );
