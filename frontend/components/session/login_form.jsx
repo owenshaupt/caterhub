@@ -20,9 +20,12 @@ export default function LoginForm(props) {
           password: Yup.string().required("Required")
         })}
         onSubmit={(values, actions) => {
-          dispatch(login(values)).then(() => {
-            actions.setSubmitting(false); // not required for async functions, will auto set to false in that case
-            // push new page to history to redirect
+          dispatch(login(values)).then(res => {
+            if (res.type === "RECEIVE_SESSION_ERRORS") {
+              actions.setSubmitting(false);
+            } else {
+              props.history.push("/");
+            }
           });
         }}
       >

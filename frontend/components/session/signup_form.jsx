@@ -21,7 +21,7 @@ export default function SignupForm(props) {
         }}
         validationSchema={Yup.object({
           company_id: Yup.number()
-            .positive("Number must be positive")
+            .positive("Company IDs positive")
             .required("Required"),
           first_name: Yup.string().required("Required"),
           last_name: Yup.string().required("Required"),
@@ -29,12 +29,17 @@ export default function SignupForm(props) {
             .email("Invalid email address")
             .required("Required"),
           password: Yup.string().required("Required"),
-          // password2: Yup.string().required("Required")
+          password2: Yup.string()
+            .oneOf([Yup.ref("password"), null], "Passwords must match")
+            .required("Required")
         })}
         onSubmit={(values, actions) => {
-          dispatch(login(values)).then(() => {
-            actions.setSubmitting(false); // not required for async functions, will auto set to false in that case
-            // push new page to history to redirect
+          dispatch(signup(values)).then(res => {
+            if (res.type === "RECEIVE_SESSION_ERRORS") {
+              actions.setSubmitting(false);
+            } else {
+              props.history.push("/");
+            }
           });
         }}
       >
@@ -49,17 +54,11 @@ export default function SignupForm(props) {
             <br />
 
             <label htmlFor='first_name'>First Name</label>
-            <input
-              name='first_name'
-              {...formik.getFieldProps("first_name")}
-            />
+            <input name='first_name' {...formik.getFieldProps("first_name")} />
             <br />
 
             <label htmlFor='last_name'>Last Name</label>
-            <input
-              name='last_name'
-              {...formik.getFieldProps("last_name")}
-            />
+            <input name='last_name' {...formik.getFieldProps("last_name")} />
             <br />
 
             <label htmlFor='email'>Email Address</label>
@@ -84,7 +83,7 @@ export default function SignupForm(props) {
               <div>{formik.errors.password}</div>
             ) : null}
             <br />
-            
+
             <label htmlFor='password2'>Confirm Password</label>
             <input
               name='password2'
