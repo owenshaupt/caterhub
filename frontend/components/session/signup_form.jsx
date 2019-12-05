@@ -1,18 +1,22 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { signup } from "../../actions/session_actions";
+import { signup, clearErrors } from "../../actions/session_actions";
 import { Formik } from "formik";
 import * as Yup from "yup";
 
 export default function SignupForm(props) {
   const dispatch = useDispatch();
+
   let errors = useSelector(state => state.errors.session.errors);
   let mappedErrors = errors.map((err, i) => {
-    return (
-      <p key={i}>{err}</p>
-    );
+    return <p key={i}>{err}</p>;
   });
+
+  const clearBeforeRedirect = () => {
+    dispatch(clearErrors());
+    props.history.push("/login");
+  };
 
   return (
     <>
@@ -110,7 +114,9 @@ export default function SignupForm(props) {
       </Formik>
       <div className='errors-div'>{mappedErrors}</div>
       <br />
-      <Link to='/login'>Already have an account? Login here.</Link>
+      <button onClick={clearBeforeRedirect}>
+        Already have an account? Login here.
+      </button>
     </>
   );
 }
