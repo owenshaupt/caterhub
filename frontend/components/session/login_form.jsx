@@ -59,6 +59,8 @@ export default function LoginForm(props) {
           </form>
         )}
       </Formik>
+      <br />
+      <Link to='/signup'>Don't have an account? Signup here.</Link>
     </>
   );
 }
