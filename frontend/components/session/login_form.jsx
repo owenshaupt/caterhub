@@ -7,6 +7,10 @@ import * as Yup from "yup";
 
 export default function LoginForm(props) {
   const dispatch = useDispatch();
+  let errors = useSelector(state => state.errors.session.errors);
+  let mappedErrors = errors.map((err, i) => {
+    return <p key={i}>{err}</p>;
+  });
 
   return (
     <>
@@ -59,6 +63,7 @@ export default function LoginForm(props) {
           </form>
         )}
       </Formik>
+      <div className='errors-div'>{mappedErrors}</div>
       <br />
       <Link to='/signup'>Don't have an account? Signup here.</Link>
     </>
