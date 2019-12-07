@@ -13,10 +13,12 @@ export default function SignupForm(props) {
     return <p key={i}>{err}</p>;
   });
 
-  const clearBeforeRedirect = () => {
-    dispatch(clearErrors());
-    props.history.push("/login");
-  };
+  useEffect(() => {
+    return () => {
+      console.log("running signup cleanup");
+      dispatch(clearErrors());
+    };
+  }, []); // empty bracket says we aren't tracking anything, only run once
 
   return (
     <>
@@ -114,9 +116,7 @@ export default function SignupForm(props) {
       </Formik>
       <div className='errors-div'>{mappedErrors}</div>
       <br />
-      <button onClick={clearBeforeRedirect}>
-        Already have an account? Login here.
-      </button>
+      <Link to='/login'>Already have an account? Login here.</Link>
     </>
   );
 }
