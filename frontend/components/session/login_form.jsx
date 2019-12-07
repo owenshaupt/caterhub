@@ -18,6 +18,13 @@ export default function LoginForm(props) {
     props.history.push("/signup");
   };
 
+  // test this cleanup
+  // useEffect(() => {
+  //   return () => {
+  //     errors = null;
+  //   };
+  // });
+
   return (
     <>
       <Formik
