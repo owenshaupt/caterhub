@@ -15,7 +15,6 @@ export default function LoginForm(props) {
 
   useEffect(() => {
     return () => {
-      console.log("running login cleanup");
       dispatch(clearErrors());
     };
   }, []); // empty bracket says we aren't tracking anything, only run once
