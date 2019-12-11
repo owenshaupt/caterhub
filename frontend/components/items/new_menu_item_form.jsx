@@ -18,7 +18,7 @@ export default function NewMenuItemForm(props) {
 
   useEffect(() => {
     console.log(errors);
-
+    // comment for green garden
     return () => {
       dispatch(clearErrors());
     };
