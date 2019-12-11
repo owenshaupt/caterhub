@@ -1,9 +1,9 @@
-// export const fetchItems = () => {
-//   return $.ajax({
-//     url: "/api/items"
-//     // error: (err) => console.log(err)
-//   });
-// };
+export const fetchItems = () => {
+  return axios({
+    method: "get",
+    url: "/api/menu_items"
+  });
+};
 
 // export const fetchItem = id => {
 //   return $.ajax({

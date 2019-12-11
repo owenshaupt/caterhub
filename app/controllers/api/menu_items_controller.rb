@@ -2,8 +2,9 @@ class Api::MenuItemsController < ApplicationController
   def create
     @menu_item = MenuItem.new(menu_item_params)
     if @menu_item.save
-      render :show
+      # render :show
     else
+      puts @menu_item.errors.full_messages
       render json: @menu_item.errors.full_messages, status: 422
     end
   end
@@ -21,6 +22,11 @@ class Api::MenuItemsController < ApplicationController
     @menu_item = MenuItem.find(params[:id])
     @menu_item.destroy
     # @items = Item.all //might not need
+    render :index
+  end
+
+  def index
+    @menu_items = MenuItem.all
     render :index
   end
 

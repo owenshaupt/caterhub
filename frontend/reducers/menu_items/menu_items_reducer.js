@@ -8,10 +8,9 @@ import {
 const menuItemsReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
   switch (action.type) {
-    // case RECEIVE_MENU_ITEMS:
-    //   return action.items;
+    case RECEIVE_MENU_ITEMS:
+      return action.menuItems.data;
     case RECEIVE_MENU_ITEM:
-      console.log("in menuItemsReducer, receiving menu item");
       return Object.assign({}, { [action.menuItem.id]: action.menuItem });
     // case REMOVE_MENU_ITEM:
     //   let newState = Object.assign({}, oldState);

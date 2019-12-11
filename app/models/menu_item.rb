@@ -12,5 +12,7 @@
 #
 
 class MenuItem < ApplicationRecord
+  validates_uniqueness_of :name, :scope => [:company_id]
+
   belongs_to :company
 end
