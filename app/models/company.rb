@@ -13,4 +13,5 @@ class Company < ApplicationRecord
 
   has_many :users
   has_many :menu_items
+  has_many :modifiers
 end
