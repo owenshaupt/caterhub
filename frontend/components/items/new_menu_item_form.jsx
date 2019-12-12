@@ -31,10 +31,10 @@ export default function NewMenuItemForm(props) {
           required_notice: 0
         }}
         validationSchema={Yup.object({
-          name: Yup.string()
-            .required("Item must have a name"),
+          name: Yup.string().required("Item must have a name"),
           price: Yup.number()
             // Price must be price format??
+            .min(0)
             .required("Item must have a price"),
           required_notice: Yup.number().required(
             "Item must have required notice (if no notice needed, use 0"
@@ -63,7 +63,9 @@ export default function NewMenuItemForm(props) {
             <input
               name='price'
               type='number'
+              placeholder='$0.00'
               {...formik.getFieldProps("price")}
+              step='0.01'
             />
             {formik.touched.price && formik.errors.price ? (
               <div>{formik.errors.price}</div>

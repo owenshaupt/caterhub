@@ -21,7 +21,7 @@ export default function Greeting(props) {
   if (items.length) {
     menuItems = items.map(item => {
       return (
-        <li key={item.id}>
+        <li className='menu-item' key={item.id}>
           <p>Item: {item.name}</p>
           <p>Price: ${item.price}</p>
           <p>Required Notice: {item.required_notice}</p>
