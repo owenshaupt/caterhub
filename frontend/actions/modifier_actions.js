@@ -7,10 +7,10 @@ export const CLEAR_MODIFIERS = "CLEAR_MODIFIERS";
 export const RECEIVE_MODIFIER_ERRORS = "RECEIVE_MODIFIER_ERRORS";
 export const CLEAR_ERRORS = "CLEAR_ERRORS";
 
-// const receiveModifiers = modifiers => ({
-//   type: RECEIVE_MODIFIERS,
-//   modifiers
-// });
+const receiveModifiers = modifiers => ({
+  type: RECEIVE_MODIFIERS,
+  modifiers
+});
 
 const receiveModifier = modifier => ({
   type: RECEIVE_MODIFIER,
@@ -31,11 +31,11 @@ export const clearErrors = () => ({
   type: CLEAR_ERRORS
 });
 
-// export const fetchModifiers = () => dispatch => {
-//   APIUtil.fetchItems()
-//     .then(items => dispatch(receiveModifiers(items)))
-//     .catch(error => dispatch(receiveErrors(error.response.data)));
-// };
+export const fetchModifiers = () => dispatch => {
+  APIUtil.fetchModifiers()
+    .then(modifier => dispatch(receiveModifiers(modifier)))
+    .catch(error => dispatch(receiveErrors(error.response.data)));
+};
 
 // export const fetchItem = id => dispatch =>
 //   APIUtil.fetchItem(id)

@@ -11,6 +11,11 @@ class Api::ModifiersController < ApplicationController
     end
   end
 
+  def index
+    @modifiers = Modifier.all
+    render :index
+  end
+
   private
 
   def modifier_params

@@ -8,8 +8,8 @@ import {
 const modifiersReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
   switch (action.type) {
-    // case RECEIVE_MODIFIERS:
-    //   return action.modifiers.data;
+    case RECEIVE_MODIFIERS:
+      return action.modifiers.data;
     case RECEIVE_MODIFIER:
       return Object.assign({}, { [action.modifier.id]: action.modifier });
     // case REMOVE_MODIFIER:

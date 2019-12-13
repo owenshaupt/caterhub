@@ -1,9 +1,9 @@
-// export const fetchItems = () => {
-//   return axios({
-//     method: "get",
-//     url: "/api/modifiers"
-//   });
-// };
+export const fetchModifiers = () => {
+  return axios({
+    method: "get",
+    url: "/api/modifiers"
+  });
+};
 
 // export const fetchItem = id => {
 //   return $.ajax({

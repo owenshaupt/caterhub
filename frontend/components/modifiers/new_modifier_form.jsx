@@ -92,12 +92,14 @@ export default function NewModifierForm(props) {
                           name='item'
                           type='checkbox'
                           value={item.id}
-                          // checked={values.item_ids.includes(item.id)}
+                          checked={formik.values.item_ids.includes(item.id)}
                           onChange={e => {
                             if (e.target.checked) {
                               arrayHelpers.push(item.id);
                             } else {
-                              const idx = values.item_ids.indexOf(item.value);
+                              const idx = formik.values.item_ids.indexOf(
+                                item.value
+                              );
                               arrayHelpers.remove(idx);
                             }
                           }}
@@ -117,7 +119,7 @@ export default function NewModifierForm(props) {
         )}
       </Formik>
       <div className='errors-div'>{mappedErrors}</div>
-      {/* <Link to='/'>Return to Your Menu</Link> */}
+      <Link to='/'>Return to Your Menu</Link>
     </>
   );
 }

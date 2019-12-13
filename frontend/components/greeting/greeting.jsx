@@ -3,16 +3,20 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchItems } from "../../actions/menu_item_actions";
 import { logout } from "../../actions/session_actions";
+import { fetchModifiers } from "../../actions/modifier_actions";
 
 export default function Greeting(props) {
   const user = useSelector(state => state.entities.users[state.session.id]);
   const items = useSelector(state => state.entities.menuItems);
+  const modifiers = useSelector(state => state.entities.modifiers);
   const dispatch = useDispatch();
 
   let menuItems;
+  let menuModifiers;
 
   useEffect(() => {
     dispatch(fetchItems());
+    dispatch(fetchModifiers());
     // return () => {
     //   cleanup;
     // };
@@ -30,6 +34,18 @@ export default function Greeting(props) {
     });
   }
 
+  if (modifiers.length) {
+    menuModifiers = modifiers.map(modifier => {
+      return (
+        <li className='menu-item' key={modifier.id}>
+          <p>Item: {modifier.name}</p>
+          <p>Price: ${modifier.price}</p>
+          <p>Item IDs: {modifier.item_ids}</p>
+        </li>
+      );
+    });
+  }
+
   if (user) {
     return (
       <div>
@@ -39,6 +55,8 @@ export default function Greeting(props) {
         <Link to='/menu/mods/new'>Add a New Modifier</Link>
         <h2>My Menu</h2>
         <ul>{menuItems}</ul>
+        <h2>My Modifiers</h2>
+        <ul>{menuModifiers}</ul>
       </div>
     );
   } else {
