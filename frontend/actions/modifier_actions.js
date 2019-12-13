@@ -5,6 +5,7 @@ export const RECEIVE_MODIFIER = "RECEIVE_MODIFIER";
 export const REMOVE_MODIFIER = "REMOVE_MODIFIER";
 export const CLEAR_MODIFIERS = "CLEAR_MODIFIERS";
 export const RECEIVE_MODIFIER_ERRORS = "RECEIVE_MODIFIER_ERRORS";
+export const CLEAR_ERRORS = "CLEAR_ERRORS";
 
 // const receiveModifiers = modifiers => ({
 //   type: RECEIVE_MODIFIERS,
@@ -21,14 +22,18 @@ const receiveModifier = modifier => ({
 //   id
 // });
 
-// export const receiveErrors = errors => ({
-//   type: RECEIVE_MODIFIER_ERRORS,
-//   errors
-// });
+export const receiveErrors = errors => ({
+  type: RECEIVE_MODIFIER_ERRORS,
+  errors
+});
+
+export const clearErrors = () => ({
+  type: CLEAR_ERRORS
+});
 
 // export const fetchModifiers = () => dispatch => {
 //   APIUtil.fetchItems()
-//     .then(items => dispatch(recieveAllMenuItems(items)))
+//     .then(items => dispatch(receiveModifiers(items)))
 //     .catch(error => dispatch(receiveErrors(error.response.data)));
 // };
 

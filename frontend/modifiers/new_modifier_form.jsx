@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { createMenuItem } from "../../actions/menu_item_actions";
-import { clearErrors } from "../../actions/session_actions";
+import { createModifier, clearErrors } from "../../actions/modifier_actions";
 import { Formik } from "formik";
 import * as Yup from "yup";
 
@@ -15,11 +14,11 @@ export default function NewModifierForm(props) {
   //   return <p key={i}>{err}</p>;
   // });
 
-  useEffect(() => {
-    return () => {
-      dispatch(clearErrors());
-    };
-  }, []);
+  // useEffect(() => {
+  //   return () => {
+  //     dispatch(clearErrors());
+  //   };
+  // }, []);
 
   return (
     <>
@@ -27,8 +26,7 @@ export default function NewModifierForm(props) {
         initialValues={{
           company_id: user.id,
           name: "",
-          price: "",
-          required_notice: 0
+          price: ""
         }}
         validationSchema={Yup.object({
           name: Yup.string().required("Item must have a name"),
@@ -36,13 +34,10 @@ export default function NewModifierForm(props) {
             // Price must be price format??
             .min(0)
             .required("Item must have a price"),
-          required_notice: Yup.number().required(
-            "Item must have required notice (if no notice needed, use 0"
-          )
         })}
         onSubmit={(values, actions) => {
-          dispatch(createMenuItem(values)).then(res => {
-            if (res.type === "RECEIVE_MENU_ITEM_ERRORS") {
+          dispatch(createModifier(values)).then(res => {
+            if (res.type === "RECEIVE_MODIFIER_ERRORS") {
               actions.setSubmitting(false);
             } else {
               props.history.push("/");
@@ -52,7 +47,7 @@ export default function NewModifierForm(props) {
       >
         {formik => (
           <form onSubmit={formik.handleSubmit}>
-            <label htmlFor='name'>Item Name</label>
+            <label htmlFor='name'>Modifier Name</label>
             <input name='name' {...formik.getFieldProps("name")} />
             {formik.touched.name && formik.errors.name ? (
               <div>{formik.errors.name}</div>
@@ -72,24 +67,13 @@ export default function NewModifierForm(props) {
             ) : null}
             <br />
 
-            <label htmlFor='required_notice'>Required Notice</label>
-            <input
-              name='required_notice'
-              type='number'
-              {...formik.getFieldProps("required_notice")}
-            />
-            {formik.touched.required_notice && formik.errors.required_notice ? (
-              <div>{formik.errors.required_notice}</div>
-            ) : null}
-            <br />
-
             <button type='submit' disabled={formik.isSubmitting}>
-              Add Item to Your Menu
+              Add Modifier to Your Menu
             </button>
           </form>
         )}
       </Formik>
-      <div className='errors-div'>{mappedErrors}</div>
+      {/* <div className='errors-div'>{mappedErrors}</div> */}
       <Link to='/'>Return to Your Menu</Link>
     </>
   );

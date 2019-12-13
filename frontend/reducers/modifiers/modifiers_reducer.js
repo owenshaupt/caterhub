@@ -9,7 +9,7 @@ const modifierReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
   switch (action.type) {
     // case RECEIVE_MODIFIERS:
-    //   return action.menuItems.data;
+    //   return action.modifiers.data;
     case RECEIVE_MODIFIER:
       return Object.assign({}, { [action.modifier.id]: action.modifier });
     // case REMOVE_MODIFIER:
@@ -23,4 +23,4 @@ const modifierReducer = (oldState = {}, action) => {
   }
 };
 
-export default menuItemsReducer;
+export default modifierReducer;

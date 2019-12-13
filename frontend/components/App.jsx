@@ -15,7 +15,7 @@ const App = () => (
       <AuthRoute exact path='/login/' component={LoginForm} />
       <AuthRoute exact path='/signup/' component={SignupForm} />
       <Route exact path='/menu/new/' component={NewMenuItemForm} />
-      {/* <Route exact path='/menu/mods/new/' component={NewModifierForm} /> */}
+      <Route exact path='/menu/mods/new/' component={NewModifierForm} />
 
       {/* <Route exact path='/items/search' component={SearchContainer} /> */}
       {/* <Route exact path='/items/:itemId/edit' component={EditItemFormContainer} /> */}
