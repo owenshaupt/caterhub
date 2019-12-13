@@ -1,6 +1,8 @@
 class Api::ModifiersController < ApplicationController
   def create
     @modifier = Modifier.new(modifier_params)
+    puts @modifier
+    puts modifier_params
     if @modifier.save
       # render :show
     else
@@ -15,7 +17,8 @@ class Api::ModifiersController < ApplicationController
     params.permit(
       :name,
       :price,
-      :company_id
+      :company_id,
+      item_ids: []
     )
   end
 end

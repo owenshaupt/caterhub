@@ -1,24 +1,38 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { createModifier, clearErrors } from "../../actions/modifier_actions"
-import { Formik } from "formik";
+import { createModifier, clearErrors } from "../../actions/modifier_actions";
+import { fetchItems } from "../../actions/menu_item_actions";
+import { Formik, FieldArray } from "formik";
 import * as Yup from "yup";
 
 export default function NewModifierForm(props) {
   const user = useSelector(state => state.entities.users[state.session.id]);
   const dispatch = useDispatch();
 
-  // let errors = useSelector(state => state.errors.modifiers.errors);
-  // let mappedErrors = errors.map((err, i) => {
-  //   return <p key={i}>{err}</p>;
-  // });
+  let errors = useSelector(state => state.errors.modifiers.errors);
+  let mappedErrors = errors.map((err, i) => {
+    return <p key={i}>{err}</p>;
+  });
 
-  // useEffect(() => {
-  //   return () => {
-  //     dispatch(clearErrors());
-  //   };
-  // }, []);
+  let menuItems = useSelector(state => state.entities.menuItems);
+  // let mappedMenuItems = Object.values(menuItems).map((item, i) => {
+  //   return (
+  //     <li key={i}>
+  //       <label htmlFor={item.id}>{item.name}</label>
+  //       <input type='checkbox' id={i} name={item.id} />
+  //     </li>
+  //   );
+  // });
+  console.log("menuItems:", menuItems);
+
+  useEffect(() => {
+    dispatch(fetchItems());
+
+    return () => {
+      dispatch(clearErrors());
+    };
+  }, []);
 
   return (
     <>
@@ -26,14 +40,15 @@ export default function NewModifierForm(props) {
         initialValues={{
           company_id: user.id,
           name: "",
-          price: ""
+          price: "",
+          item_ids: []
         }}
         validationSchema={Yup.object({
           name: Yup.string().required("Item must have a name"),
           price: Yup.number()
             // Price must be price format??
             .min(0)
-            .required("Item must have a price"),
+            .required("Item must have a price")
         })}
         onSubmit={(values, actions) => {
           dispatch(createModifier(values)).then(res => {
@@ -53,7 +68,6 @@ export default function NewModifierForm(props) {
               <div>{formik.errors.name}</div>
             ) : null}
             <br />
-
             <label htmlFor='price'>Price</label>
             <input
               name='price'
@@ -67,14 +81,43 @@ export default function NewModifierForm(props) {
             ) : null}
             <br />
 
+            <FieldArray
+              name='item_ids'
+              render={arrayHelpers => (
+                <div>
+                  {Object.values(menuItems).map(item => (
+                    <label key={item.id}>
+                      <div>
+                        <input
+                          name='item'
+                          type='checkbox'
+                          value={item.id}
+                          // checked={values.item_ids.includes(item.id)}
+                          onChange={e => {
+                            if (e.target.checked) {
+                              arrayHelpers.push(item.id);
+                            } else {
+                              const idx = values.item_ids.indexOf(item.value);
+                              arrayHelpers.remove(idx);
+                            }
+                          }}
+                        />
+                        <span>{item.name}</span>
+                      </div>
+                    </label>
+                  ))}
+                </div>
+              )}
+            />
+
             <button type='submit' disabled={formik.isSubmitting}>
               Add Modifier to Your Menu
             </button>
           </form>
         )}
       </Formik>
-      {/* <div className='errors-div'>{mappedErrors}</div> */}
-      <Link to='/'>Return to Your Menu</Link>
+      <div className='errors-div'>{mappedErrors}</div>
+      {/* <Link to='/'>Return to Your Menu</Link> */}
     </>
   );
 }
