@@ -5,7 +5,7 @@ import {
   CLEAR_MODIFIERS
 } from "../../actions/modifier_actions";
 
-const modifierReducer = (oldState = {}, action) => {
+const modifiersReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
   switch (action.type) {
     // case RECEIVE_MODIFIERS:
@@ -23,4 +23,4 @@ const modifierReducer = (oldState = {}, action) => {
   }
 };
 
-export default modifierReducer;
+export default modifiersReducer;
