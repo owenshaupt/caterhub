@@ -36,6 +36,7 @@ export default function Greeting(props) {
         <h1>Hello, {user.first_name}!</h1>
         <button onClick={() => dispatch(logout())}>Logout</button>
         <Link to='/menu/new'>Add a New Menu Item</Link>
+        <Link to='/menu/mods/new'>Add a New Modifier</Link>
         <h2>My Menu</h2>
         <ul>{menuItems}</ul>
       </div>
