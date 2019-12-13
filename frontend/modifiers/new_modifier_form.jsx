@@ -10,10 +10,10 @@ export default function NewModifierForm(props) {
   const user = useSelector(state => state.entities.users[state.session.id]);
   const dispatch = useDispatch();
 
-  let errors = useSelector(state => state.errors.menuItems.errors);
-  let mappedErrors = errors.map((err, i) => {
-    return <p key={i}>{err}</p>;
-  });
+  // let errors = useSelector(state => state.errors.modifiers.errors);
+  // let mappedErrors = errors.map((err, i) => {
+  //   return <p key={i}>{err}</p>;
+  // });
 
   useEffect(() => {
     return () => {

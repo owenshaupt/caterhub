@@ -5,6 +5,7 @@ export const RECEIVE_MENU_ITEM = "RECEIVE_MENU_ITEM";
 export const REMOVE_MENU_ITEM = "REMOVE_MENU_ITEM";
 export const CLEAR_MENU_ITEMS = "CLEAR_MENU_ITEMS";
 export const RECEIVE_MENU_ITEM_ERRORS = "RECEIVE_MENU_ITEM_ERRORS";
+export const CLEAR_ERRORS = "CLEAR_ERRORS";
 
 const recieveAllMenuItems = menuItems => ({
   type: RECEIVE_MENU_ITEMS,
@@ -24,6 +25,10 @@ const removeMenuItem = id => ({
 export const receiveErrors = errors => ({
   type: RECEIVE_MENU_ITEM_ERRORS,
   errors
+});
+
+export const clearErrors = () => ({
+  type: CLEAR_ERRORS
 });
 
 export const fetchItems = () => dispatch => {

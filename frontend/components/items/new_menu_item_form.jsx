@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { createMenuItem } from "../../actions/menu_item_actions";
-import { clearErrors } from "../../actions/session_actions";
+import { createMenuItem, clearErrors } from "../../actions/menu_item_actions";
 import { Formik } from "formik";
 import * as Yup from "yup";
 
