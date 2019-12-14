@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 
 export default function HomeTab(props) {
@@ -7,7 +7,7 @@ export default function HomeTab(props) {
     display: flex;
   `;
 
-  const Title = styled.div`
+  const Label = styled.div`
     border: 1px solid black;
     align-content: center;
     margin: auto;
@@ -16,7 +16,7 @@ export default function HomeTab(props) {
   return (
     <>
       <Tab>
-        <Title>{props.label}</Title>
+        <Label>{props.label}</Label>
       </Tab>
     </>
   );
