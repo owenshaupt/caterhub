@@ -100,17 +100,34 @@ export default function PartnerHome(props) {
 
   return (
     <>
+      <h1>welcome to THE home page, {user.first_name}</h1>
       <div className='partner-home-grid'>
         <div className='practice-header'></div>
         <div className='practice-sidebar'>
-          <div className='practice-sidebar-tab'></div>
-          <div className='practice-sidebar-tab'></div>
-          <div className='practice-sidebar-tab'></div>
-          <div className='practice-sidebar-tab'></div>
-          <div className='practice-sidebar-tab'></div>
-          <div className='practice-sidebar-tab'></div>
-          <div className='practice-sidebar-tab'></div>
-          <div className='practice-sidebar-tab'></div>
+          <div className='practice-sidebar-tab'>
+            <div className='tab-title'>My Menu</div>
+          </div>
+          <div className='practice-sidebar-tab'>
+            <div className='tab-title'>Thing</div>
+          </div>
+          <div className='practice-sidebar-tab'>
+            <div className='tab-title'>Thing</div>
+          </div>
+          <div className='practice-sidebar-tab'>
+            <div className='tab-title'>Thing</div>
+          </div>
+          <div className='practice-sidebar-tab'>
+            <div className='tab-title'>Thing</div>
+          </div>
+          <div className='practice-sidebar-tab'>
+            <div className='tab-title'>Thing</div>
+          </div>
+          <div className='practice-sidebar-tab'>
+            <div className='tab-title'>Thing</div>
+          </div>
+          <div className='practice-sidebar-tab'>
+            <div className='tab-title'>Thing</div>
+          </div>
         </div>
         <div className='practice-body'></div>
       </div>
