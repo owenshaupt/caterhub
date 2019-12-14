@@ -35,14 +35,13 @@ export default function Greeting(props) {
   // }
 
   // useEffect(() => {
-  //   dispatch(fetchMenuItems());
-  //   // return () => {
-  //   //   cleanup
-  //   // };
+  //   return () => {
+  //     cleanup
+  //   };
   // }, [items])
 
-  if (items.length) {
-    menuItems = items.map(item => {
+  if (Object.values(items).length) {
+    menuItems = Object.values(items).map(item => {
       return (
         <li className='menu-item' key={item.id}>
           <p>Item: {item.name}</p>
