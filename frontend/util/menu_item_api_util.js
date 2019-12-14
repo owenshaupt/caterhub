@@ -1,4 +1,4 @@
-export const fetchItems = () => {
+export const fetchMenuItems = () => {
   return axios({
     method: "get",
     url: "/api/menu_items"

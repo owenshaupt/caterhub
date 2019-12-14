@@ -62,8 +62,8 @@ export const createModifier = modifier => dispatch =>
 //     .then(items => dispatch(receiveFilteredItems(items)))
 //     .catch(error => dispatch(receiveErrors(error.responseJSON)));
 
-// export const clearItems = () => {
-//   return {
-//     type: CLEAR_ITEMS
-//   };
-// };
+export const clearModifiers = () => {
+  return {
+    type: CLEAR_MODIFIERS
+  };
+};

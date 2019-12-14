@@ -16,8 +16,8 @@ const modifiersReducer = (oldState = {}, action) => {
     //   let newState = Object.assign({}, oldState);
     //   delete newState[action.id];
     //   return newState;
-    // case CLEAR_MODIFIERS:
-    //   return {};
+    case CLEAR_MODIFIERS:
+      return {};
     default:
       return oldState;
   }

@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchItems } from "../../actions/menu_item_actions";
 import { logout } from "../../actions/session_actions";
-import { fetchModifiers } from "../../actions/modifier_actions";
+import { fetchMenuItems, clearMenuItems } from "../../actions/menu_item_actions";
+import { fetchModifiers, clearModifiers } from "../../actions/modifier_actions";
 
 export default function Greeting(props) {
   const user = useSelector(state => state.entities.users[state.session.id]);
@@ -15,11 +15,12 @@ export default function Greeting(props) {
   let menuModifiers;
 
   useEffect(() => {
-    dispatch(fetchItems());
+    dispatch(fetchMenuItems());
     dispatch(fetchModifiers());
-    // return () => {
-    //   cleanup;
-    // };
+    return () => {
+      dispatch(clearMenuItems());
+      dispatch(clearModifiers());
+    };
   }, []);
 
   if (items.length) {

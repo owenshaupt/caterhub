@@ -31,8 +31,8 @@ export const clearErrors = () => ({
   type: CLEAR_ERRORS
 });
 
-export const fetchItems = () => dispatch => {
-  APIUtil.fetchItems()
+export const fetchMenuItems = () => dispatch => {
+  APIUtil.fetchMenuItems()
     .then(items => dispatch(recieveAllMenuItems(items)))
     .catch(error => dispatch(receiveErrors(error.response.data)));
 };
@@ -62,8 +62,8 @@ export const createMenuItem = menuItem => dispatch =>
 //     .then(items => dispatch(receiveFilteredItems(items)))
 //     .catch(error => dispatch(receiveErrors(error.responseJSON)));
 
-// export const clearItems = () => {
-//   return {
-//     type: CLEAR_ITEMS
-//   };
-// };
+export const clearMenuItems = () => {
+  return {
+    type: CLEAR_MENU_ITEMS
+  };
+};

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { createModifier, clearErrors } from "../../actions/modifier_actions";
-import { fetchItems } from "../../actions/menu_item_actions";
+import { fetchMenuItems } from "../../actions/menu_item_actions";
 import { Formik, FieldArray } from "formik";
 import * as Yup from "yup";
 
@@ -27,7 +27,7 @@ export default function NewModifierForm(props) {
   console.log("menuItems:", menuItems);
 
   useEffect(() => {
-    dispatch(fetchItems());
+    dispatch(fetchMenuItems());
 
     return () => {
       dispatch(clearErrors());
