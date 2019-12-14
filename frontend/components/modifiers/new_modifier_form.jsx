@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { createModifier, clearErrors } from "../../actions/modifier_actions";
-import { fetchMenuItems } from "../../actions/menu_item_actions";
+import { fetchMenuItems, clearMenuItems } from "../../actions/menu_item_actions";
 import { Formik, FieldArray } from "formik";
 import * as Yup from "yup";
 
@@ -16,21 +16,13 @@ export default function NewModifierForm(props) {
   });
 
   let menuItems = useSelector(state => state.entities.menuItems);
-  // let mappedMenuItems = Object.values(menuItems).map((item, i) => {
-  //   return (
-  //     <li key={i}>
-  //       <label htmlFor={item.id}>{item.name}</label>
-  //       <input type='checkbox' id={i} name={item.id} />
-  //     </li>
-  //   );
-  // });
-  console.log("menuItems:", menuItems);
 
   useEffect(() => {
     dispatch(fetchMenuItems());
 
     return () => {
       dispatch(clearErrors());
+      dispatch(clearMenuItems());
     };
   }, []);
 

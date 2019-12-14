@@ -17,6 +17,7 @@ export default function Greeting(props) {
   useEffect(() => {
     dispatch(fetchMenuItems());
     dispatch(fetchModifiers());
+
     return () => {
       dispatch(clearMenuItems());
       dispatch(clearModifiers());
@@ -54,10 +55,16 @@ export default function Greeting(props) {
         <button onClick={() => dispatch(logout())}>Logout</button>
         <Link to='/menu/new'>Add a New Menu Item</Link>
         <Link to='/menu/mods/new'>Add a New Modifier</Link>
-        <h2>My Menu</h2>
-        <ul>{menuItems}</ul>
-        <h2>My Modifiers</h2>
-        <ul>{menuModifiers}</ul>
+        <body className='menu-body'>
+          <section className='menu-section'>
+            <h2>My Menu</h2>
+            <ul>{menuItems}</ul>
+          </section>
+          <section className='menu-section'>
+            <h2>My Modifiers</h2>
+            <ul>{menuModifiers}</ul>
+          </section>
+        </body>
       </div>
     );
   } else {
