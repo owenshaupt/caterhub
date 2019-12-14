@@ -1,1 +1,1 @@
-json.extract! modifier, :id, :name, :price
+json.extract! modifier, :id, :name, :price, :item_ids
