@@ -12,10 +12,10 @@ const menuItemsReducer = (oldState = {}, action) => {
       return action.menuItems.data;
     case RECEIVE_MENU_ITEM:
       return Object.assign({}, { [action.menuItem.id]: action.menuItem });
-    // case REMOVE_MENU_ITEM:
-    //   let newState = Object.assign({}, oldState);
-    //   delete newState[action.id];
-    //   return newState;
+    case REMOVE_MENU_ITEM:
+      let newState = Object.assign({}, oldState);
+      delete newState[action.id];
+      return newState;
     case CLEAR_MENU_ITEMS:
       return {};
     default:

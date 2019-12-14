@@ -1,0 +1,39 @@
+.partner-home-grid {
+  display: grid;
+  border: 1px solid black;
+  grid-template-columns: 220px auto;
+  grid-template-rows: 1fr 7fr;
+  height: 100vh - 8;
+  width: 100vw - 8;
+}
+
+.practice-header {
+  border: 1px solid red;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+.practice-sidebar {
+  border: 1px solid blue;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 2;
+  grid-row-end: 3;
+
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+.practice-sidebar-tab {
+  border: 1px solid pink;
+}
+
+.practice-body {
+  border: 1px solid green;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}

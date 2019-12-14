@@ -6,6 +6,7 @@ import SignupForm from "./session/signup_form";
 import NewMenuItemForm from "./items/new_menu_item_form";
 import NewModifierForm from "./modifiers/new_modifier_form";
 import { AuthRoute } from "../util/route_util";
+import PartnerHome from "./partner_views/partner_home";
 
 const App = () => (
   <div>
@@ -16,6 +17,7 @@ const App = () => (
       <AuthRoute exact path='/signup/' component={SignupForm} />
       <Route exact path='/menu/new/' component={NewMenuItemForm} />
       <Route exact path='/menu/mods/new/' component={NewModifierForm} />
+      <Route exact path='/home/' component={PartnerHome} />
 
       {/* <Route exact path='/items/search' component={SearchContainer} /> */}
       {/* <Route exact path='/items/:itemId/edit' component={EditItemFormContainer} /> */}

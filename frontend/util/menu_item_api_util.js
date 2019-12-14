@@ -5,7 +5,7 @@ export const fetchMenuItems = () => {
   });
 };
 
-// export const fetchItem = id => {
+// export const fetchMenuItem = id => {
 //   return $.ajax({
 //     url: `/api/items/${id}`
 //     // error: (err) => console.log(err)
@@ -20,7 +20,7 @@ export const createMenuItem = itemData => {
   });
 };
 
-// export const updateItem = item => {
+// export const updateMenuItem = item => {
 //   return $.ajax({
 //     url: `/api/items/${item.id}`,
 //     method: "PATCH",
@@ -31,10 +31,9 @@ export const createMenuItem = itemData => {
 //   });
 // };
 
-// export const deleteItem = id => {
-//   return $.ajax({
-//     type: "DELETE",
-//     url: `/api/items/${id}`
-//     // error: (err) => console.log(err)
-//   });
-// };
+export const deleteMenuItem = id => {
+  return axios({
+    method: "delete",
+    url: `/api/menu_items/${id}`
+  });
+};

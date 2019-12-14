@@ -37,8 +37,8 @@ export const fetchMenuItems = () => dispatch => {
     .catch(error => dispatch(receiveErrors(error.response.data)));
 };
 
-// export const fetchItem = id => dispatch =>
-//   APIUtil.fetchItem(id)
+// export const fetchMenuItem = id => dispatch =>
+//   APIUtil.fetchMenuItem(id)
 //     .then(item => dispatch(recieveItem(item)))
 //     .catch(error => dispatch(receiveErrors(error.responseJSON)));
 
@@ -47,15 +47,15 @@ export const createMenuItem = menuItem => dispatch =>
     .then(menuItem => dispatch(receiveMenuItem(menuItem)))
     .catch(error => dispatch(receiveErrors(error.response.data)));
 
-// export const updateItem = item => dispatch =>
-//   APIUtil.updateItem(item)
+// export const updateMenuItem = item => dispatch =>
+//   APIUtil.updateMenuItem(item)
 //     .then(item => dispatch(recieveItem(item)))
 //     .catch(error => dispatch(receiveErrors(error.responseJSON)));
 
-// export const deleteItem = id => dispatch =>
-//   APIUtil.deleteItem(id)
-//     .then(() => dispatch(removeItem()))
-//     .catch(error => dispatch(receiveErrors(error.responseJSON)));
+// export const deleteMenuItem = id => dispatch =>
+//   APIUtil.deleteMenuItem(id)
+//     .then(() => dispatch(removeMenuItem()))
+//     .catch(error => dispatch(receiveErrors(error.response.data)));
 
 // export const searchItems = search_id => dispatch =>
 //   APIUtilSearch.searchItems(search_id)
