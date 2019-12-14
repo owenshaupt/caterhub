@@ -8,6 +8,7 @@ import {
   clearMenuItems
 } from "../../actions/menu_item_actions";
 import { fetchModifiers, clearModifiers } from "../../actions/modifier_actions";
+import HomeTab from "./home/home_tab";
 
 export default function PartnerHome(props) {
   const user = useSelector(state => state.entities.users[state.session.id]);
@@ -104,33 +105,17 @@ export default function PartnerHome(props) {
       <div className='partner-home-grid'>
         <div className='practice-header'></div>
         <div className='practice-sidebar'>
-          <div className='practice-sidebar-tab'>
-            <div className='tab-title'>My Menu</div>
-          </div>
-          <div className='practice-sidebar-tab'>
-            <div className='tab-title'>Thing</div>
-          </div>
-          <div className='practice-sidebar-tab'>
-            <div className='tab-title'>Thing</div>
-          </div>
-          <div className='practice-sidebar-tab'>
-            <div className='tab-title'>Thing</div>
-          </div>
-          <div className='practice-sidebar-tab'>
-            <div className='tab-title'>Thing</div>
-          </div>
-          <div className='practice-sidebar-tab'>
-            <div className='tab-title'>Thing</div>
-          </div>
-          <div className='practice-sidebar-tab'>
-            <div className='tab-title'>Thing</div>
-          </div>
-          <div className='practice-sidebar-tab'>
-            <div className='tab-title'>Thing</div>
-          </div>
+          <HomeTab label='My Menu' />
+          <HomeTab label='Thing' />
+          <HomeTab label='Thing' />
+          <HomeTab label='Thing' />
+          <HomeTab label='Thing' />
+          <HomeTab label='Thing' />
+          <HomeTab label='Thing' />
+          <HomeTab label='Thing' />
         </div>
         <div className='practice-body'></div>
       </div>
     </>
-  )
+  );
 }
