@@ -31,9 +31,10 @@ export const createMenuItem = itemData => {
 //   });
 // };
 
-export const deleteMenuItem = id => {
+export const deleteMenuItem = (itemId, userId) => {
   return axios({
     method: "delete",
-    url: `/api/menu_items/${id}`
+    url: `/api/menu_items/${itemId}`,
+    data: [itemId, userId]
   });
 };

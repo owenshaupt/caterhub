@@ -36,7 +36,7 @@ export default function NewMenuItemForm(props) {
             .min(0)
             .required("Item must have a price"),
           required_notice: Yup.number().required(
-            "Item must have required notice (if no notice needed, use 0"
+            "Item must have required notice (if no notice is needed, use 0)"
           )
         })}
         onSubmit={(values, actions) => {

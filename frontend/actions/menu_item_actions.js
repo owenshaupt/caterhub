@@ -17,10 +17,16 @@ const receiveMenuItem = menuItem => ({
   menuItem
 });
 
-const removeMenuItem = id => ({
-  type: REMOVE_MENU_ITEM,
-  id
-});
+const removeMenuItem = id => {
+  const idsStr = id.config.data.slice(1, id.config.data.length - 1);
+  const splitIds = idsStr.split(",");
+  const userId = +splitIds[0];
+
+  return {
+    type: REMOVE_MENU_ITEM,
+    id: userId
+  };
+};
 
 export const receiveErrors = errors => ({
   type: RECEIVE_MENU_ITEM_ERRORS,
@@ -52,10 +58,10 @@ export const createMenuItem = menuItem => dispatch =>
 //     .then(item => dispatch(recieveItem(item)))
 //     .catch(error => dispatch(receiveErrors(error.responseJSON)));
 
-// export const deleteMenuItem = id => dispatch =>
-//   APIUtil.deleteMenuItem(id)
-//     .then(() => dispatch(removeMenuItem()))
-//     .catch(error => dispatch(receiveErrors(error.response.data)));
+export const deleteMenuItem = (itemId, userId) => dispatch =>
+  APIUtil.deleteMenuItem(itemId, userId)
+    .then(itemId => dispatch(removeMenuItem(itemId)))
+    .catch(error => dispatch(receiveErrors(error.response.data)));
 
 // export const searchItems = search_id => dispatch =>
 //   APIUtilSearch.searchItems(search_id)

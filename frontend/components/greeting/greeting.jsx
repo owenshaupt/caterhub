@@ -28,16 +28,15 @@ export default function Greeting(props) {
     };
   }, []);
 
-  // function handleMenuItemDelete(id) {
-  //   // e.preventDefault();
-  //   dispatch(deleteMenuItem(id))
-  //     .then(dispatch(fetchMenuItems())); // ? needed ?
-  // }
+  function handleMenuItemDelete(id) {
+    dispatch(deleteMenuItem(id, user.id)).then(dispatch(fetchMenuItems()));
+  }
 
   // useEffect(() => {
-  //   return () => {
-  //     cleanup
-  //   };
+  // dispatch(fetchMenuItems());
+  // return () => {
+  //   cleanup
+  // };
   // }, [items])
 
   if (Object.values(items).length) {
@@ -47,16 +46,16 @@ export default function Greeting(props) {
           <p>Item: {item.name}</p>
           <p>Price: ${item.price}</p>
           <p>Required Notice: {item.required_notice}</p>
-          {/* <button onClick={() => handleMenuItemDelete(item.id)}>
+          <button onClick={() => handleMenuItemDelete(item.id)}>
             Delete Item
-          </button> */}
+          </button>
         </li>
       );
     });
   }
 
-  if (modifiers.length) {
-    menuModifiers = modifiers.map(modifier => {
+  if (Object.values(modifiers).length) {
+    menuModifiers = Object.values(modifiers).map(modifier => {
       return (
         <li className='menu-item' key={modifier.id}>
           <p>Item: {modifier.name}</p>
