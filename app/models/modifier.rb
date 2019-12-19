@@ -15,7 +15,7 @@ class Modifier < ApplicationRecord
   validates_uniqueness_of :name, :scope => [:company_id]
 
   belongs_to :company
-  has_many :menu_item_modifiers
+  has_many :menu_item_modifiers, dependent: :destroy
 
   has_many :menu_items,
     through: :menu_item_modifiers,

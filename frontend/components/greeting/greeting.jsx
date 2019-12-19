@@ -60,7 +60,7 @@ export default function Greeting(props) {
         <li className='menu-item' key={modifier.id}>
           <p>Item: {modifier.name}</p>
           <p>Price: ${modifier.price}</p>
-          <p>Item IDs: {modifier.item_ids}</p>
+          {/* <p>Item IDs: {modifier.item_ids}</p> */}
         </li>
       );
     });
