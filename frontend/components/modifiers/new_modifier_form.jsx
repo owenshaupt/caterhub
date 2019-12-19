@@ -22,7 +22,7 @@ export default function NewModifierForm(props) {
 
     return () => {
       dispatch(clearErrors());
-      dispatch(clearMenuItems());
+      // dispatch(clearMenuItems());
     };
   }, []);
 

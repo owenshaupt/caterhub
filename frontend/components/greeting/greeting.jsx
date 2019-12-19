@@ -32,13 +32,6 @@ export default function Greeting(props) {
     dispatch(deleteMenuItem(id, user.id)).then(dispatch(fetchMenuItems()));
   }
 
-  // useEffect(() => {
-  // dispatch(fetchMenuItems());
-  // return () => {
-  //   cleanup
-  // };
-  // }, [items])
-
   if (Object.values(items).length) {
     menuItems = Object.values(items).map(item => {
       return (
@@ -61,6 +54,9 @@ export default function Greeting(props) {
           <p>Item: {modifier.name}</p>
           <p>Price: ${modifier.price}</p>
           {/* <p>Item IDs: {modifier.item_ids}</p> */}
+          {/* <button onClick={() => handleModifierDelete(modifier.id)}>
+            Delete Modifier
+          </button> */}
         </li>
       );
     });
