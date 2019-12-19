@@ -42,4 +42,10 @@ class Api::MenuItemsController < ApplicationController
       :company_id
     )
   end
+
+  def item_modifiers_params
+    params.permit(
+      modifier_ids: []
+    )
+  end
 end

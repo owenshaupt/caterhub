@@ -2,7 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { createMenuItem, clearErrors } from "../../actions/menu_item_actions";
-import { Formik } from "formik";
+import { fetchModifiers, clearModifiers } from "../../actions/modifier_actions";
+import { Formik, FieldArray } from "formik";
 import * as Yup from "yup";
 
 export default function NewMenuItemForm(props) {
@@ -14,9 +15,14 @@ export default function NewMenuItemForm(props) {
     return <p key={i}>{err}</p>;
   });
 
+  let modifiers = useSelector(state => state.entities.modifiers);
+
   useEffect(() => {
+    dispatch(fetchModifiers());
+
     return () => {
       dispatch(clearErrors());
+      dispatch(clearModifiers());
     };
   }, []);
 
@@ -27,7 +33,8 @@ export default function NewMenuItemForm(props) {
           company_id: user.id,
           name: "",
           price: "",
-          required_notice: 0
+          required_notice: 0,
+          modifier_ids: []
         }}
         validationSchema={Yup.object({
           name: Yup.string().required("Item must have a name"),
@@ -81,6 +88,37 @@ export default function NewMenuItemForm(props) {
               <div>{formik.errors.required_notice}</div>
             ) : null}
             <br />
+
+            <FieldArray
+              name='modifier_ids'
+              render={arrayHelpers => (
+                <div>
+                  {Object.values(modifiers).map(modifier => (
+                    <label key={modifier.id}>
+                      <div>
+                        <input
+                          name='modifier'
+                          type='checkbox'
+                          value={modifier.id}
+                          checked={formik.values.modifier_ids.includes(modifier.id)}
+                          onChange={e => {
+                            if (e.target.checked) {
+                              arrayHelpers.push(modifier.id);
+                            } else {
+                              const idx = formik.values.modifier_ids.indexOf(
+                                item.value
+                              );
+                              arrayHelpers.remove(idx);
+                            }
+                          }}
+                        />
+                        <span>{modifier.name}</span>
+                      </div>
+                    </label>
+                  ))}
+                </div>
+              )}
+            />
 
             <button type='submit' disabled={formik.isSubmitting}>
               Add Item to Your Menu
