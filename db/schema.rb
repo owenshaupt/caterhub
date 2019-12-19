@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_12_011759) do
+ActiveRecord::Schema.define(version: 2019_12_19_000115) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,16 @@ ActiveRecord::Schema.define(version: 2019_12_12_011759) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_companies_on_name"
+  end
+
+  create_table "menu_item_modifiers", force: :cascade do |t|
+    t.bigint "menu_item_id", null: false
+    t.bigint "modifier_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["menu_item_id", "modifier_id"], name: "index_menu_item_modifiers_on_menu_item_id_and_modifier_id", unique: true
+    t.index ["menu_item_id"], name: "index_menu_item_modifiers_on_menu_item_id"
+    t.index ["modifier_id"], name: "index_menu_item_modifiers_on_modifier_id"
   end
 
   create_table "menu_items", force: :cascade do |t|

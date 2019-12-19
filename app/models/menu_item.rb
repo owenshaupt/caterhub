@@ -15,4 +15,13 @@ class MenuItem < ApplicationRecord
   validates_uniqueness_of :name, :scope => [:company_id]
 
   belongs_to :company
+  has_many :menu_item_modifiers
+
+  has_many :modifiers,
+    through: :menu_item_modifiers,
+    source: :modifier
+
+  # has_many :menu_item_modifiers,
+  #   class_name: :MenuItemModifier,
+  #   foreign_key: :menu_item_id
 end
