@@ -31,10 +31,10 @@ export const createModifier = modData => {
 //   });
 // };
 
-// export const deleteItem = id => {
-//   return $.ajax({
-//     type: "DELETE",
-//     url: `/api/items/${id}`
-//     // error: (err) => console.log(err)
-//   });
-// };
+export const deleteModifier = (modifierId, userId) => {
+  return axios({
+    method: "delete",
+    url: `/api/modifiers/${modifierId}`,
+    data: [modifierId, userId]
+  });
+};

@@ -7,7 +7,7 @@ import {
   deleteMenuItem,
   clearMenuItems
 } from "../../actions/menu_item_actions";
-import { fetchModifiers, clearModifiers } from "../../actions/modifier_actions";
+import { fetchModifiers, clearModifiers, deleteModifier } from "../../actions/modifier_actions";
 
 export default function Greeting(props) {
   const user = useSelector(state => state.entities.users[state.session.id]);
@@ -32,6 +32,10 @@ export default function Greeting(props) {
     dispatch(deleteMenuItem(id, user.id)).then(dispatch(fetchMenuItems()));
   }
 
+  function handleModifierDelete(id) {
+    dispatch(deleteModifier(id, user.id)).then(dispatch(fetchModifiers()));
+  }
+
   if (Object.values(items).length) {
     menuItems = Object.values(items).map(item => {
       return (
@@ -54,9 +58,9 @@ export default function Greeting(props) {
           <p>Item: {modifier.name}</p>
           <p>Price: ${modifier.price}</p>
           {/* <p>Item IDs: {modifier.item_ids}</p> */}
-          {/* <button onClick={() => handleModifierDelete(modifier.id)}>
+          <button onClick={() => handleModifierDelete(modifier.id)}>
             Delete Modifier
-          </button> */}
+          </button>
         </li>
       );
     });

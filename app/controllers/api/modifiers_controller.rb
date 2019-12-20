@@ -15,8 +15,6 @@ class Api::ModifiersController < ApplicationController
           render json: menu_item_modifier.errors.full_messages, status: 422
         end
       end
-
-      # render :show
     else
       puts @modifier.errors.full_messages
       render json: @modifier.errors.full_messages, status: 422
@@ -41,12 +39,6 @@ class Api::ModifiersController < ApplicationController
       :name,
       :price,
       :company_id
-    )
-  end
-
-  def modifier_items_params
-    params.permit(
-      item_ids: []
     )
   end
 end

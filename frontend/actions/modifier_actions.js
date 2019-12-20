@@ -17,10 +17,16 @@ const receiveModifier = modifier => ({
   modifier
 });
 
-// const removeModifier = id => ({
-//   type: REMOVE_MODIFIER,
-//   id
-// });
+const removeModifier = id => {
+  const idsStr = id.config.data.slice(1, id.config.data.length - 1);
+  const splitIds = idsStr.split(",");
+  const userId = +splitIds[0];
+
+  return {
+    type: REMOVE_MODIFIER,
+    id: userId
+  };
+};
 
 export const receiveErrors = errors => ({
   type: RECEIVE_MODIFIER_ERRORS,
@@ -52,10 +58,10 @@ export const createModifier = modifier => dispatch =>
 //     .then(item => dispatch(recieveItem(item)))
 //     .catch(error => dispatch(receiveErrors(error.responseJSON)));
 
-// export const deleteItem = id => dispatch =>
-//   APIUtil.deleteItem(id)
-//     .then(() => dispatch(removeItem()))
-//     .catch(error => dispatch(receiveErrors(error.responseJSON)));
+export const deleteModifier = (modifierId, userId) => dispatch =>
+  APIUtil.deleteModifier(modifierId, userId)
+    .then(modifierId => dispatch(removeModifier(modifierId)))
+    .catch(error => dispatch(receiveErrors(error.responseJSON)));
 
 // export const searchItems = search_id => dispatch =>
 //   APIUtilSearch.searchItems(search_id)

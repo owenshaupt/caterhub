@@ -12,10 +12,10 @@ const modifiersReducer = (oldState = {}, action) => {
       return action.modifiers.data;
     case RECEIVE_MODIFIER:
       return Object.assign({}, { [action.modifier.id]: action.modifier });
-    // case REMOVE_MODIFIER:
-    //   let newState = Object.assign({}, oldState);
-    //   delete newState[action.id];
-    //   return newState;
+    case REMOVE_MODIFIER:
+      let newState = Object.assign({}, oldState);
+      delete newState[action.id];
+      return newState;
     case CLEAR_MODIFIERS:
       return {};
     default:
