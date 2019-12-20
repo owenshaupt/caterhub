@@ -101,9 +101,10 @@ export default function PartnerHome(props) {
 
   return (
     <>
-      <h1>welcome to THE home page, {user.first_name}</h1>
       <div className='partner-home-grid'>
-        <div className='practice-header'></div>
+        <div className='practice-header'>
+          <h1>welcome to THE home page, {user.first_name}</h1>
+        </div>
         <div className='practice-sidebar'>
           <HomeTab label='My Menu' />
           <HomeTab label='Thing' />
