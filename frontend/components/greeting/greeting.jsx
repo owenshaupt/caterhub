@@ -7,7 +7,11 @@ import {
   deleteMenuItem,
   clearMenuItems
 } from "../../actions/menu_item_actions";
-import { fetchModifiers, clearModifiers, deleteModifier } from "../../actions/modifier_actions";
+import {
+  fetchModifiers,
+  clearModifiers,
+  deleteModifier
+} from "../../actions/modifier_actions";
 
 export default function Greeting(props) {
   const user = useSelector(state => state.entities.users[state.session.id]);
@@ -41,7 +45,7 @@ export default function Greeting(props) {
       return (
         <li className='menu-item' key={item.id}>
           <p>Item: {item.name}</p>
-          <p>Price: ${item.price}</p>
+          <p>Price: ${Number.parseFloat(item.price) / 100}</p>
           <p>Required Notice: {item.required_notice}</p>
           <button onClick={() => handleMenuItemDelete(item.id)}>
             Delete Item
@@ -56,7 +60,7 @@ export default function Greeting(props) {
       return (
         <li className='menu-item' key={modifier.id}>
           <p>Item: {modifier.name}</p>
-          <p>Price: ${modifier.price}</p>
+          <p>Price: ${Number.parseFloat(modifier.price) / 100}</p>
           <button onClick={() => handleModifierDelete(modifier.id)}>
             Delete Modifier
           </button>

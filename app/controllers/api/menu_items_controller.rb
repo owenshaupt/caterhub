@@ -1,6 +1,9 @@
 class Api::MenuItemsController < ApplicationController
   def create
     @menu_item = MenuItem.new(menu_item_params)
+    @price_in_cents = menu_item_params["price"] * 100
+    @menu_item["price"] = @price_in_cents
+    puts @menu_item["price"]
 
     if @menu_item.save
       @menu_item_modifier_ids = item_modifiers_params["modifier_ids"]
