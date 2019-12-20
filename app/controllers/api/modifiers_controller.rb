@@ -41,4 +41,10 @@ class Api::ModifiersController < ApplicationController
       :company_id
     )
   end
+
+  def modifier_items_params
+    params.permit(
+      item_ids: []
+    )
+  end
 end
