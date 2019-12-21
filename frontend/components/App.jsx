@@ -10,7 +10,7 @@ import PartnerHome from "./partner_views/partner_home";
 
 const App = () => (
   <div>
-    <h1>Caterhub</h1>
+    {/* <h1>Caterhub</h1> */}
 
     <Switch>
       <AuthRoute exact path='/login/' component={LoginForm} />
