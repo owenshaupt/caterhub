@@ -1,0 +1,20 @@
+# == Schema Information
+#
+# Table name: order_modifiers
+#
+#  id          :bigint           not null, primary key
+#  order_id    :integer          not null
+#  modifier_id :integer          not null
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  order_id: 1
+  modifier_id: 1
+
+two:
+  order_id: 1
+  modifier_id: 1

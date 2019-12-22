@@ -20,5 +20,13 @@ class Order < ApplicationRecord
   validates :contact_phone_number, length: {is: 10}
 
   has_many :menu_items
-  has_many :modifiers
+
+  # has_many :menu_items,
+  #   through: :order_menu_items
+
+  has_many :order_modifiers
+
+  has_many :modifiers,
+    through: :order_modifiers
+
 end

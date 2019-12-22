@@ -14,7 +14,9 @@
 class MenuItem < ApplicationRecord
   validates_uniqueness_of :name, :scope => [:company_id]
 
-  belongs_to :order
+  belongs_to :order_menu_item
+  has_many :orders,
+    through: :order_menu_item
 
   belongs_to :company
   has_many :menu_item_modifiers, dependent: :destroy

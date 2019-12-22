@@ -13,7 +13,10 @@
 class Modifier < ApplicationRecord
   validates_uniqueness_of :name, :scope => [:company_id]
 
-  belongs_to :order
+  has_many :order_modifiers
+
+  # has_many :orders,
+  #   through: :order_modifier
 
   belongs_to :company
   has_many :menu_item_modifiers, dependent: :destroy
