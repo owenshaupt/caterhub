@@ -7,6 +7,7 @@ export const CLEAR_MODIFIERS = "CLEAR_MODIFIERS";
 export const RECEIVE_MODIFIER_ERRORS = "RECEIVE_MODIFIER_ERRORS";
 export const CLEAR_ERRORS = "CLEAR_ERRORS";
 
+// needs to specify for which company is logged in
 const receiveModifiers = modifiers => ({
   type: RECEIVE_MODIFIERS,
   modifiers

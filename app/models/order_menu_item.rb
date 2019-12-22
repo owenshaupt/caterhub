@@ -10,6 +10,11 @@
 #
 
 class OrderMenuItem < ApplicationRecord
-  has_one :menu_items
-  has_one :order
+  belongs_to :menu_item,
+    class_name: "MenuItem",
+    foreign_key: "menu_item_id"
+
+  belongs_to :order,
+    class_name: "Order",
+    foreign_key: "order_id"
 end

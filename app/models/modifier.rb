@@ -15,8 +15,8 @@ class Modifier < ApplicationRecord
 
   has_many :order_modifiers
 
-  # has_many :orders,
-  #   through: :order_modifier
+  has_many :orders,
+    through: :order_modifiers
 
   belongs_to :company
   has_many :menu_item_modifiers, dependent: :destroy
