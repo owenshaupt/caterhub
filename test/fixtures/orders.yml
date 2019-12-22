@@ -1,0 +1,39 @@
+# == Schema Information
+#
+# Table name: orders
+#
+#  id                   :bigint           not null, primary key
+#  contact_name         :string           not null
+#  contact_phone_number :string           not null
+#  contact_email        :string           not null
+#  company_name         :string
+#  order_date           :datetime         not null
+#  fulfillment_date     :datetime         not null
+#  total_price          :integer          not null
+#  for_delivery?        :boolean          not null
+#  special_instructions :string
+#  created_at           :datetime         not null
+#  updated_at           :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  contact_name: MyString
+  contact_phone_number: MyString
+  contact_email: MyString
+  company_name: MyString
+  order_date: 2019-12-21 16:04:56
+  fulfillment_date: 2019-12-21 16:04:56
+  for_delivery?: false
+  special_instructions: MyString
+
+two:
+  contact_name: MyString
+  contact_phone_number: MyString
+  contact_email: MyString
+  company_name: MyString
+  order_date: 2019-12-21 16:04:56
+  fulfillment_date: 2019-12-21 16:04:56
+  for_delivery?: false
+  special_instructions: MyString
