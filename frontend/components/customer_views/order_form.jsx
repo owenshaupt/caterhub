@@ -7,12 +7,10 @@ import { Formik, FieldArray } from "formik";
 import * as Yup from "yup";
 
 import DatePicker, { addMonths } from "react-datepicker";
-// import "../../../node_modules/react-datepicker/dist/react-datepicker.css";
 
 export default function OrderForm(props) {
   // const user = useSelector(state => state.entities.users[state.session.id]);
   const dispatch = useDispatch();
-  const [startDate, setStartDate] = useState(new Date());
 
   let errors = useSelector(state => state.errors.modifiers.errors);
   let mappedErrors = errors.map((err, i) => {
@@ -30,10 +28,6 @@ export default function OrderForm(props) {
     // dispatch(clearMenuItems());
     // };
   }, []);
-
-  function handleDateChange(date) {
-    setStartDate(date);
-  }
 
   const DatePickerField = ({ name, value, onChange }) => {
     return (
@@ -70,20 +64,18 @@ export default function OrderForm(props) {
           // item_ids: []
         }}
         validationSchema={Yup.object({
-          contact_name: Yup.string().required(
-            "We need a contact for this order"
-          ),
+          contact_name: Yup.string().required("Please enter a contact name"),
           contact_phone_number: Yup.string().required(
-            "We need a phone number for this order"
+            "Please enter a phone number"
           ),
           contact_email: Yup.string()
             .email("Please provide a valid email")
-            .required("We need a email for this order"),
+            .required("Please enter an email"),
           company_name: Yup.string(),
           order_date: Yup.date().required(),
           fulfillment_date: Yup.date().required("What day is your order for?"),
           total_price: Yup.string(), //.required("Item must have a price")
-          for_delivery: Yup.boolean().required("Must specify"),
+          for_delivery: Yup.boolean(),
           special_instructions: Yup.string()
         })}
         onSubmit={(values, actions) => {
@@ -112,7 +104,7 @@ export default function OrderForm(props) {
             <label htmlFor='contact_phone_number'>Contact Phone Number</label>
             <input
               name='contact_phone_number'
-              placeholder='312-500-2039'
+              placeholder='312-875-0066'
               {...formik.getFieldProps("contact_phone_number")}
             />
             {formik.touched.contact_phone_number &&
@@ -140,7 +132,9 @@ export default function OrderForm(props) {
               <div>{formik.errors.company_name}</div>
             ) : null}
             <br />
-            <label htmlFor='fulfillment_date'>Select date and time for order to be completed</label>{" "}
+            <label htmlFor='fulfillment_date'>
+              Select date and time for order to be completed
+            </label>
             <DatePickerField
               name='fulfillment_date'
               value={formik.values.fulfillment_date}
@@ -148,7 +142,7 @@ export default function OrderForm(props) {
               onChange={formik.setFieldValue}
             />
             <br />
-            <label htmlFor='for_delivery'>Delivery Order?</label>{" "}
+            <label htmlFor='for_delivery'>Delivery Order?</label>
             {/* Need to get address if so */}
             <input
               name='for_delivery'
@@ -161,7 +155,7 @@ export default function OrderForm(props) {
             <br />
             <label htmlFor='special_instructions'>
               Special Instructions/Delivery Address
-            </label>{" "}
+            </label>
             {/* Need to get address if so */}
             <textarea
               name='special_instructions'
