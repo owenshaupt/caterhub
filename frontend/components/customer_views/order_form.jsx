@@ -6,37 +6,52 @@ import { fetchModifiers } from "../../actions/modifier_actions";
 import { Formik, FieldArray } from "formik";
 import * as Yup from "yup";
 
+import DatePicker, { addMonths } from "react-datepicker";
+// import "../../../node_modules/react-datepicker/dist/react-datepicker.css";
+
 export default function OrderForm(props) {
   // const user = useSelector(state => state.entities.users[state.session.id]);
   const dispatch = useDispatch();
+  const [startDate, setStartDate] = useState(new Date());
 
   let errors = useSelector(state => state.errors.modifiers.errors);
   let mappedErrors = errors.map((err, i) => {
     return <p key={i}>{err}</p>;
   });
 
-  let menuItems = useSelector(state => state.entities.menuItems);
-  let modifiers = useSelector(state => state.entities.modifiers);
+  // let menuItems = useSelector(state => state.entities.menuItems);
+  // let modifiers = useSelector(state => state.entities.modifiers);
 
   useEffect(() => {
-    dispatch(fetchMenuItems());
-    dispatch(fetchModifiers());
-
+    // dispatch(fetchMenuItems());
+    // dispatch(fetchModifiers());
     // return () => {
     // dispatch(clearErrors());
     // dispatch(clearMenuItems());
     // };
   }, []);
 
-  // contact_name              string
-  // contact_phone_number      string
-  // contact_email             string
-  // company_name              string
-  // order_date                datetime
-  // fulfillment_date          datetime
-  // total_price               integer
-  // for_delivery?             boolean
-  // special_instructions      string
+  function handleDateChange(date) {
+    setStartDate(date);
+  }
+
+  const DatePickerField = ({ name, value, onChange }) => {
+    return (
+      <DatePicker
+        selected={(value && new Date(value)) || null}
+        // onChange={date => handleDateChange(date)}
+        minDate={new Date()}
+        maxDate={() => addMonths(new Date(), 5)}
+        showDisabledMonthNavigation
+        showTimeSelect
+        timeFormat='hh:mm'
+        timeIntervals={15}
+        timeCaption='time'
+        dateFormat='M/d/yy h:mm aa'
+        onChange={val => onChange(name, val)}
+      />
+    );
+  };
 
   return (
     <>
@@ -48,7 +63,7 @@ export default function OrderForm(props) {
           contact_email: "",
           company_name: "",
           order_date: new Date(),
-          fulfillment_date: "",
+          fulfillment_date: new Date(),
           total_price: "",
           for_delivery: false,
           special_instructions: ""
@@ -125,15 +140,13 @@ export default function OrderForm(props) {
               <div>{formik.errors.company_name}</div>
             ) : null}
             <br />
-            <label htmlFor='fulfillment_date'>Fulfillment Date</label>
-            <input
+            <label htmlFor='fulfillment_date'>Select date and time for order to be completed</label>{" "}
+            <DatePickerField
               name='fulfillment_date'
+              value={formik.values.fulfillment_date}
               {...formik.getFieldProps("fulfillment_date")}
+              onChange={formik.setFieldValue}
             />
-            {formik.touched.fulfillment_date &&
-            formik.errors.fulfillment_date ? (
-              <div>{formik.errors.fulfillment_date}</div>
-            ) : null}
             <br />
             <label htmlFor='for_delivery'>Delivery Order?</label>{" "}
             {/* Need to get address if so */}
