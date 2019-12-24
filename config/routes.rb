@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       resources :users, only: [:create, :show]
       resources :menu_items, only: [:create, :edit, :destroy, :show, :index]
       resources :modifiers, only: [:create, :index, :destroy, :show]
+      resources :orders, only: [:create, :edit, :index, :destroy, :show]
       resource :session, only: [:create, :destroy]
       resources :companies, only: [:show]
   end

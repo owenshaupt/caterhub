@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_22_001423) do
+ActiveRecord::Schema.define(version: 2019_12_24_024930) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,7 +73,7 @@ ActiveRecord::Schema.define(version: 2019_12_22_001423) do
     t.datetime "order_date", null: false
     t.datetime "fulfillment_date", null: false
     t.integer "total_price", null: false
-    t.boolean "for_delivery?", null: false
+    t.boolean "for_delivery", null: false
     t.string "special_instructions"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

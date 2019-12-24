@@ -6,7 +6,10 @@ import { fetchModifiers } from "../../actions/modifier_actions";
 import { Formik, FieldArray } from "formik";
 import * as Yup from "yup";
 
+import { TextField } from "@material-ui/core";
+
 import DatePicker, { addMonths } from "react-datepicker";
+import { createOrder } from "../../util/order_api_util";
 
 export default function OrderForm(props) {
   // const user = useSelector(state => state.entities.users[state.session.id]);
@@ -49,6 +52,10 @@ export default function OrderForm(props) {
 
   return (
     <>
+      <br />
+      <TextField id='outlined-basic' label='Contact Name' variant='outlined' />
+      <br />
+
       <Formik
         initialValues={{
           company_id: 1, // change to company based on url/code
@@ -58,7 +65,7 @@ export default function OrderForm(props) {
           company_name: "",
           order_date: new Date(),
           fulfillment_date: new Date(),
-          total_price: "",
+          total_price: 0,
           for_delivery: false,
           special_instructions: ""
           // item_ids: []
@@ -87,6 +94,8 @@ export default function OrderForm(props) {
           //   }
           // });
           // create submission action
+
+          createOrder(values);
         }}
       >
         {formik => (
