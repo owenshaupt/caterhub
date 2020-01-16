@@ -12,7 +12,7 @@ import DatePicker, { addMonths } from "react-datepicker";
 import { createOrder } from "../../util/order_api_util";
 
 export default function OrderForm(props) {
-  // const user = useSelector(state => state.entities.users[state.session.id]);
+  const user = useSelector(state => state.entities.users[state.session.id]);
   const dispatch = useDispatch();
 
   let errors = useSelector(state => state.errors.modifiers.errors);
@@ -52,9 +52,11 @@ export default function OrderForm(props) {
 
   return (
     <>
-      <br />
+      {/* <br />
       <TextField id='outlined-basic' label='Contact Name' variant='outlined' />
-      <br />
+      <br /> */}
+
+      <h1>{user.name}</h1>
 
       <Formik
         initialValues={{
