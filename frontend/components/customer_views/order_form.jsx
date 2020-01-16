@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchMenuItems } from "../../actions/menu_item_actions";
 import { fetchModifiers } from "../../actions/modifier_actions";
+import { fetchCompany } from "../../actions/company_actions";
 import { Formik, FieldArray } from "formik";
 import * as Yup from "yup";
 
@@ -29,6 +30,7 @@ export default function OrderForm(props) {
   useEffect(() => {
     // dispatch(fetchMenuItems());
     // dispatch(fetchModifiers());
+    dispatch(fetchCompany(company));
     // return () => {
     // dispatch(clearErrors());
     // dispatch(clearMenuItems());

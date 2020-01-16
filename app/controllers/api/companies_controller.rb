@@ -1,14 +1,20 @@
 class Api::CompaniesController < ApplicationController
   def show
-    @user = User.find_by(company_string: company_string)
-    render :show
+    puts params
+
+    @company = Company.find_by('company_string' => params[:id])
+    if @company
+      render :show
+    else
+      render json: ['Invalid company/URL'], status: 422
+    end
   end
   
   private
 
   def company_params
     params.permit(
-      :company_string
+      :id
     )
   end
 end
