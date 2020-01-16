@@ -20,6 +20,9 @@ export default function OrderForm(props) {
     return <p key={i}>{err}</p>;
   });
 
+  const company = (props.match.params.companyString);
+  console.log('company: ', company);
+
   // let menuItems = useSelector(state => state.entities.menuItems);
   // let modifiers = useSelector(state => state.entities.modifiers);
 

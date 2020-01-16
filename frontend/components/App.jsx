@@ -20,6 +20,7 @@ const App = () => (
       <Route exact path='/menu/mods/new/' component={NewModifierForm} />
       <Route exact path='/home/' component={PartnerHome} />
       <Route exact path='/order/' component={OrderForm} />
+      <Route exact path='/order/:companyString' component={OrderForm} />
 
       {/* <Route exact path='/items/search' component={SearchContainer} /> */}
       {/* <Route exact path='/items/:itemId/edit' component={EditItemFormContainer} /> */}

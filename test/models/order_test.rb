@@ -10,7 +10,7 @@
 #  order_date           :datetime         not null
 #  fulfillment_date     :datetime         not null
 #  total_price          :integer          not null
-#  for_delivery?        :boolean          not null
+#  for_delivery         :boolean          not null
 #  special_instructions :string
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
