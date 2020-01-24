@@ -7,7 +7,7 @@ import NewMenuItemForm from "./items/new_menu_item_form";
 import NewModifierForm from "./modifiers/new_modifier_form";
 import { AuthRoute } from "../util/route_util";
 import PartnerHome from "./partner_views/partner_home";
-import OrderForm from "./customer_views/order_form";
+import OrderForm from "./customer_views/order/order_form";
 
 const App = () => (
   <div>

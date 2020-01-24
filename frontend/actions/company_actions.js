@@ -3,7 +3,7 @@ import * as APIUtil from "../util/company_api_util";
 // export const RECEIVE_COMPANYS = "RECEIVE_COMPANYS";
 export const RECEIVE_COMPANY = "RECEIVE_COMPANY";
 // export const REMOVE_COMPANY = "REMOVE_COMPANY";
-// export const CLEAR_COMPANYS = "CLEAR_COMPANYS";
+export const CLEAR_COMPANIES = "CLEAR_COMPANIES";
 export const RECEIVE_COMPANY_ERRORS = "RECEIVE_COMPANY_ERRORS";
 export const CLEAR_ERRORS = "CLEAR_ERRORS";
 
@@ -68,9 +68,9 @@ export const fetchCompany = companyString => dispatch =>
 //     .then(items => dispatch(receiveFilteredItems(items)))
 //     .catch(error => dispatch(receiveErrors(error.responseJSON)));
 
-export const clearMenuItems = () => {
+export const clearCompanies = () => {
   return {
-    type: CLEAR_COMPANYS
+    type: CLEAR_COMPANIES
   };
 };
 // 

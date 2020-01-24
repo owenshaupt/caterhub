@@ -1,16 +1,15 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchMenuItems } from "../../actions/menu_item_actions";
-import { fetchModifiers } from "../../actions/modifier_actions";
-import { fetchCompany } from "../../actions/company_actions";
+import { fetchMenuItems } from "../../../actions/menu_item_actions";
+import { fetchModifiers } from "../../../actions/modifier_actions";
+import { fetchCompany, clearCompanies } from "../../../actions/company_actions";
 import { Formik, FieldArray } from "formik";
 import * as Yup from "yup";
-
-import { TextField } from "@material-ui/core";
+import OrderFormMenu from "./order_form_menu";
 
 import DatePicker, { addMonths } from "react-datepicker";
-import { createOrder } from "../../util/order_api_util";
+import { createOrder } from "../../../util/order_api_util";
 
 export default function OrderForm(props) {
   const user = useSelector(state => state.entities.users[state.session.id]);
@@ -21,8 +20,9 @@ export default function OrderForm(props) {
     return <p key={i}>{err}</p>;
   });
 
-  const company = (props.match.params.companyString);
-  console.log('company: ', company);
+  const company = useSelector(state => state.entities.company);
+  const companyString = props.match.params.companyString;
+  // console.log("companyString: ", companyString);
 
   // let menuItems = useSelector(state => state.entities.menuItems);
   // let modifiers = useSelector(state => state.entities.modifiers);
@@ -30,11 +30,13 @@ export default function OrderForm(props) {
   useEffect(() => {
     // dispatch(fetchMenuItems());
     // dispatch(fetchModifiers());
-    dispatch(fetchCompany(company));
-    // return () => {
-    // dispatch(clearErrors());
-    // dispatch(clearMenuItems());
-    // };
+    dispatch(fetchCompany(companyString));
+    
+    return () => {
+      dispatch(clearCompanies());
+      // dispatch(clearErrors());
+      // dispatch(clearMenuItems());
+    };
   }, []);
 
   const DatePickerField = ({ name, value, onChange }) => {
@@ -57,11 +59,7 @@ export default function OrderForm(props) {
 
   return (
     <>
-      {/* <br />
-      <TextField id='outlined-basic' label='Contact Name' variant='outlined' />
-      <br /> */}
-
-      <h1>{user.name}</h1>
+      <h1>Ordering for {company.name}!</h1>
 
       <Formik
         initialValues={{
@@ -149,7 +147,7 @@ export default function OrderForm(props) {
             ) : null}
             <br />
             <label htmlFor='fulfillment_date'>
-              Select date and time for order to be completed
+              Select date and time for fulfillment
             </label>
             <DatePickerField
               name='fulfillment_date'
@@ -234,7 +232,8 @@ export default function OrderForm(props) {
         )}
       </Formik>
       <div className='errors-div'>{mappedErrors}</div>
-      {/* <Link to='/'>Return to Your Menu</Link> */}
+
+      <OrderFormMenu companyString={companyString} />
     </>
   );
 }
