@@ -52,8 +52,6 @@ export default function OrderForm(props) {
     );
   };
 
-  console.log("company: ", company);
-  console.log("company.id: ", company.id);
   return (
     <>
       <h1>Ordering for {company.name}!</h1>
