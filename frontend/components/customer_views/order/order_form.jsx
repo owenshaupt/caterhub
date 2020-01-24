@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchMenuItems } from "../../../actions/menu_item_actions";
-import { fetchModifiers } from "../../../actions/modifier_actions";
 import { fetchCompany, clearCompanies } from "../../../actions/company_actions";
 import { Formik, FieldArray } from "formik";
 import * as Yup from "yup";
@@ -12,7 +11,6 @@ import DatePicker, { addMonths } from "react-datepicker";
 import { createOrder } from "../../../util/order_api_util";
 
 export default function OrderForm(props) {
-  const user = useSelector(state => state.entities.users[state.session.id]);
   const dispatch = useDispatch();
 
   let errors = useSelector(state => state.errors.modifiers.errors);
@@ -25,13 +23,11 @@ export default function OrderForm(props) {
   // console.log("companyString: ", companyString);
 
   // let menuItems = useSelector(state => state.entities.menuItems);
-  // let modifiers = useSelector(state => state.entities.modifiers);
 
   useEffect(() => {
     // dispatch(fetchMenuItems());
-    // dispatch(fetchModifiers());
     dispatch(fetchCompany(companyString));
-    
+
     return () => {
       dispatch(clearCompanies());
       // dispatch(clearErrors());
@@ -43,7 +39,6 @@ export default function OrderForm(props) {
     return (
       <DatePicker
         selected={(value && new Date(value)) || null}
-        // onChange={date => handleDateChange(date)}
         minDate={new Date()}
         maxDate={() => addMonths(new Date(), 5)}
         showDisabledMonthNavigation
@@ -57,13 +52,15 @@ export default function OrderForm(props) {
     );
   };
 
+  console.log("company: ", company);
+  console.log("company.id: ", company.id);
   return (
     <>
       <h1>Ordering for {company.name}!</h1>
 
       <Formik
         initialValues={{
-          company_id: 1, // change to company based on url/code
+          company_id: 0,
           contact_name: "",
           contact_phone_number: "",
           contact_email: "",
@@ -91,15 +88,7 @@ export default function OrderForm(props) {
           special_instructions: Yup.string()
         })}
         onSubmit={(values, actions) => {
-          // dispatch(createModifier(values)).then(res => {
-          //   if (res.type === "RECEIVE_MODIFIER_ERRORS") {
-          //     actions.setSubmitting(false);
-          //   } else {
-          //     props.history.push("/");
-          //   }
-          // });
-          // create submission action
-
+          values.company_id = company.id;
           createOrder(values);
         }}
       >
