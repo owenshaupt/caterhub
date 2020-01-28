@@ -13,20 +13,22 @@ import { createOrder } from "../../../util/order_api_util";
 export default function OrderForm(props) {
   const dispatch = useDispatch();
 
+  // const company = useSelector(state => state.entities.company);
+  const [company, setCompany] = useState(undefined);
+  const companyString = props.match.params.companyString;
+
+  const [menuItems, setMenuItems] = useState([]);
+
   let errors = useSelector(state => state.errors.modifiers.errors);
   let mappedErrors = errors.map((err, i) => {
     return <p key={i}>{err}</p>;
   });
 
-  const company = useSelector(state => state.entities.company);
-  const companyString = props.match.params.companyString;
-  // console.log("companyString: ", companyString);
-
-  // let menuItems = useSelector(state => state.entities.menuItems);
-
   useEffect(() => {
-    // dispatch(fetchMenuItems());
-    dispatch(fetchCompany(companyString));
+    dispatch(fetchCompany(companyString)).then(data => {
+      setCompany(data.company.data);
+      setMenuItems(data.company.data.menu_items);
+    });
 
     return () => {
       dispatch(clearCompanies());
@@ -54,7 +56,8 @@ export default function OrderForm(props) {
 
   return (
     <>
-      <h1>Ordering for {company.name}!</h1>
+      <h1>{company ? company.name : ``}</h1>
+      {/* change this ^^ for better UX, maybe Suspense API? */}
 
       <Formik
         initialValues={{
@@ -220,7 +223,7 @@ export default function OrderForm(props) {
       </Formik>
       <div className='errors-div'>{mappedErrors}</div>
 
-      <OrderFormMenu companyString={companyString} />
+      {/* <OrderFormMenu menuItems={company.menu_items} /> */}
     </>
   );
 }

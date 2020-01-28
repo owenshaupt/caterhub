@@ -13,20 +13,22 @@ import {
 } from "../../../actions/modifier_actions";
 
 export default function OrderFormMenu(props) {
-  const user = useSelector(state => state.entities.users[state.session.id]);
-  const items = useSelector(state => state.entities.menuItems);
-  const company = useSelector(state => state.entities.company);
+  let items;
+  console.log("items: ", items);
+  // const company = useSelector(state => state.entities.company);
   const dispatch = useDispatch();
 
   let menuItems;
 
   useEffect(() => {
-    dispatch(fetchCompany(props.companyString));
-    dispatch(fetchMenuItems());
+    // dispatch(fetchCompany(props.companyString));
+    // dispatch(fetchMenuItems());
+    items = props.menuItems;
+    console.log("items: ", items);
 
     return () => {
-      dispatch(clearMenuItems());
-      dispatch(clearCompanies());
+      // dispatch(clearMenuItems());
+      // dispatch(clearCompanies());
     };
   }, []);
 
