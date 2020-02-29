@@ -1,30 +1,20 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchCompany, clearCompanies } from "../../../actions/company_actions";
 
-import {
-  fetchMenuItems,
-  clearMenuItems
-} from "../../../actions/menu_item_actions";
-import {
-  fetchModifiers,
-  clearModifiers
-} from "../../../actions/modifier_actions";
+// import {
+//   fetchMenuItems,
+//   clearMenuItems
+// } from "../../../actions/menu_item_actions";
+// import {
+//   fetchModifiers,
+//   clearModifiers
+// } from "../../../actions/modifier_actions";
 
 export default function OrderFormMenu(props) {
-  let items;
-  console.log("items: ", items);
-  // const company = useSelector(state => state.entities.company);
-  const dispatch = useDispatch();
-
-  let menuItems;
-
   useEffect(() => {
-    // dispatch(fetchCompany(props.companyString));
-    // dispatch(fetchMenuItems());
-    items = props.menuItems;
-    console.log("items: ", items);
+    // console.log("props.menuItems: ", props.menuItems);
 
     return () => {
       // dispatch(clearMenuItems());
@@ -32,8 +22,9 @@ export default function OrderFormMenu(props) {
     };
   }, []);
 
-  if (Object.values(items).length) {
-    menuItems = Object.values(items).map(item => {
+  if (props.menuItems.length) {
+    console.log(props.menuItems);
+    menuItems = Object.values(props.menuItems).map(item => {
       return (
         <li className='menu-item' key={item.id}>
           <div>
@@ -63,27 +54,30 @@ export default function OrderFormMenu(props) {
         </li>
       );
     });
+  } else {
+    return <p>Loading</p>;
   }
 
-  if (user) {
-    return (
-      <div className='inner-grid menu-pane'>
-        <h2 className='inner-grid-child menu-pane-label'>Items</h2>
-        <div className='inner-grid-child menu-pane-body'>
-          <section className='menu-section items'>
-            <ul>{menuItems}</ul>
-          </section>
-        </div>
-      </div>
-    );
-  } else {
-    return (
-      <div>
-        <h3>Nobody's home...</h3>
-        <Link to='/signup'>Signup</Link>
-        <br />
-        <Link to='/login'>Login</Link>
-      </div>
-    );
-  }
+  // if (user) {
+  //   return (
+  //     <div className='inner-grid menu-pane'>
+  //       <h2 className='inner-grid-child menu-pane-label'>Items</h2>
+  //       <div className='inner-grid-child menu-pane-body'>
+  //         <section className='menu-section items'>
+  //           <ul>{menuItems}</ul>
+  //           <p>P TEXT</p>
+  //         </section>
+  //       </div>
+  //     </div>
+  //   );
+  // } else {
+  //   return (
+  //     <div>
+  //       <h3>Nobody's home...</h3>
+  //       <Link to='/signup'>Signup</Link>
+  //       <br />
+  //       <Link to='/login'>Login</Link>
+  //     </div>
+  //   );
+  // }
 }

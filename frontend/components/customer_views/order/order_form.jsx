@@ -1,7 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchMenuItems } from "../../../actions/menu_item_actions";
+import {
+  fetchMenuItems,
+  fetchSelectedMenuItems
+} from "../../../actions/menu_item_actions";
 import { fetchCompany, clearCompanies } from "../../../actions/company_actions";
 import { Formik, FieldArray } from "formik";
 import * as Yup from "yup";
@@ -13,7 +16,6 @@ import { createOrder } from "../../../util/order_api_util";
 export default function OrderForm(props) {
   const dispatch = useDispatch();
 
-  // const company = useSelector(state => state.entities.company);
   const [company, setCompany] = useState(undefined);
   const companyString = props.match.params.companyString;
 
@@ -27,7 +29,6 @@ export default function OrderForm(props) {
   useEffect(() => {
     dispatch(fetchCompany(companyString)).then(data => {
       setCompany(data.company.data);
-      setMenuItems(data.company.data.menu_items);
     });
 
     return () => {
@@ -36,6 +37,22 @@ export default function OrderForm(props) {
       // dispatch(clearMenuItems());
     };
   }, []);
+
+  useEffect(() => {
+    console.log(company);
+    if (company) {
+      dispatch(fetchSelectedMenuItems(company.id)).then(data => {
+        console.log("data: ", data);
+        // setMenuItems(data.company.data.menu_items);
+      });
+    }
+    // return () => {
+    //   cleanup;
+    // };
+  }, [company]);
+
+  // console.log("company: ", company);
+  // console.log("menuItems: ", menuItems);
 
   const DatePickerField = ({ name, value, onChange }) => {
     return (
@@ -54,12 +71,13 @@ export default function OrderForm(props) {
     );
   };
 
-  return (
-    <>
-      <h1>{company ? company.name : ``}</h1>
-      {/* change this ^^ for better UX, maybe Suspense API? */}
+  if (menuItems) {
+    return (
+      <>
+        <h1>{company ? company.name : ``}</h1>
+        {/* change this ^^ for better UX, maybe Suspense API? */}
 
-      <Formik
+        {/* <Formik
         initialValues={{
           company_id: 0,
           contact_name: "",
@@ -70,8 +88,8 @@ export default function OrderForm(props) {
           fulfillment_date: new Date(),
           total_price: 0,
           for_delivery: false,
-          special_instructions: ""
-          // item_ids: []
+          special_instructions: "",
+          item_ids: []
         }}
         validationSchema={Yup.object({
           contact_name: Yup.string().required("Please enter a contact name"),
@@ -147,7 +165,7 @@ export default function OrderForm(props) {
             />
             <br />
             <label htmlFor='for_delivery'>Delivery Order?</label>
-            {/* Need to get address if so */}
+            Need to get address if so
             <input
               name='for_delivery'
               type='checkbox'
@@ -160,7 +178,7 @@ export default function OrderForm(props) {
             <label htmlFor='special_instructions'>
               Special Instructions/Delivery Address
             </label>
-            {/* Need to get address if so */}
+            Need to get address if so
             <textarea
               name='special_instructions'
               placeholder='If you checked YES for delivery, please provide your address here'
@@ -171,7 +189,7 @@ export default function OrderForm(props) {
               <div>{formik.errors.special_instructions}</div>
             ) : null}
             <br />
-            {/*             
+            yadda form
             <label htmlFor='price'>Price</label>
             <input
               name='price'
@@ -214,16 +232,17 @@ export default function OrderForm(props) {
                   ))}
                 </div>
               )}
-            /> */}
+            />
             <button type='submit' disabled={formik.isSubmitting}>
               Place Your Order!
             </button>
           </form>
         )}
-      </Formik>
-      <div className='errors-div'>{mappedErrors}</div>
+      </Formik> */}
+        <div className='errors-div'>{mappedErrors}</div>
 
-      {/* <OrderFormMenu menuItems={company.menu_items} /> */}
-    </>
-  );
+        <OrderFormMenu menuItems={menuItems} />
+      </>
+    );
+  }
 }

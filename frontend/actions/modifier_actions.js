@@ -46,7 +46,7 @@ export const fetchModifiers = () => dispatch => {
 
 // export const fetchItem = id => dispatch =>
 //   APIUtil.fetchItem(id)
-//     .then(item => dispatch(recieveItem(item)))
+//     .then(item => dispatch(receiveItem(item)))
 //     .catch(error => dispatch(receiveErrors(error.responseJSON)));
 
 export const createModifier = modifier => dispatch =>
@@ -56,7 +56,7 @@ export const createModifier = modifier => dispatch =>
 
 // export const updateItem = item => dispatch =>
 //   APIUtil.updateItem(item)
-//     .then(item => dispatch(recieveItem(item)))
+//     .then(item => dispatch(receiveItem(item)))
 //     .catch(error => dispatch(receiveErrors(error.responseJSON)));
 
 export const deleteModifier = (modifierId, userId) => dispatch =>

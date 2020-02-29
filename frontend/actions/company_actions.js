@@ -7,7 +7,7 @@ export const CLEAR_COMPANIES = "CLEAR_COMPANIES";
 export const RECEIVE_COMPANY_ERRORS = "RECEIVE_COMPANY_ERRORS";
 export const CLEAR_ERRORS = "CLEAR_ERRORS";
 
-// const recieveAllMenuItems = menuItems => ({
+// const receiveAllMenuItems = menuItems => ({
 //   type: RECEIVE_COMPANYS,
 //   menuItems
 // });
@@ -39,7 +39,7 @@ export const clearErrors = () => ({
 
 // export const fetchMenuItems = () => dispatch => {
 //   APIUtil.fetchMenuItems()
-//     .then(items => dispatch(recieveAllMenuItems(items)))
+//     .then(items => dispatch(receiveAllMenuItems(items)))
 //     .catch(error => dispatch(receiveErrors(error.response.data)));
 // };
 
@@ -55,7 +55,7 @@ export const fetchCompany = companyString => dispatch =>
 
 // export const updateMenuItem = item => dispatch =>
 //   APIUtil.updateMenuItem(item)
-//     .then(item => dispatch(recieveItem(item)))
+//     .then(item => dispatch(receiveItem(item)))
 //     .catch(error => dispatch(receiveErrors(error.responseJSON)));
 
 // export const deleteMenuItem = (itemId, userId) => dispatch =>

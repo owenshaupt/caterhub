@@ -7,7 +7,7 @@ export const CLEAR_MENU_ITEMS = "CLEAR_MENU_ITEMS";
 export const RECEIVE_MENU_ITEM_ERRORS = "RECEIVE_MENU_ITEM_ERRORS";
 export const CLEAR_ERRORS = "CLEAR_ERRORS";
 
-const recieveAllMenuItems = menuItems => ({
+const receiveAllMenuItems = menuItems => ({
   type: RECEIVE_MENU_ITEMS,
   menuItems
 });
@@ -18,8 +18,8 @@ const receiveMenuItem = menuItem => ({
 });
 
 const removeMenuItem = id => {
-  const idsStr = id.config.data.slice(1, id.config.data.length - 1);
-  const splitIds = idsStr.split(",");
+  const idsString = id.config.data.slice(1, id.config.data.length - 1);
+  const splitIds = idsString.split(",");
   const userId = +splitIds[0];
 
   return {
@@ -39,13 +39,18 @@ export const clearErrors = () => ({
 
 export const fetchMenuItems = () => dispatch => {
   APIUtil.fetchMenuItems()
-    .then(items => dispatch(recieveAllMenuItems(items)))
+    .then(items => dispatch(receiveAllMenuItems(items)))
     .catch(error => dispatch(receiveErrors(error.response.data)));
 };
 
+export const fetchSelectedMenuItems = companyId => dispatch =>
+  APIUtil.fetchSelectedMenuItems(companyId)
+    .then(items => dispatch(receiveAllMenuItems(items)))
+    .catch(error => dispatch(receiveErrors(error.responseJSON)));
+
 // export const fetchMenuItem = id => dispatch =>
 //   APIUtil.fetchMenuItem(id)
-//     .then(item => dispatch(recieveItem(item)))
+//     .then(item => dispatch(receiveItem(item)))
 //     .catch(error => dispatch(receiveErrors(error.responseJSON)));
 
 export const createMenuItem = menuItem => dispatch =>
@@ -55,7 +60,7 @@ export const createMenuItem = menuItem => dispatch =>
 
 // export const updateMenuItem = item => dispatch =>
 //   APIUtil.updateMenuItem(item)
-//     .then(item => dispatch(recieveItem(item)))
+//     .then(item => dispatch(receiveItem(item)))
 //     .catch(error => dispatch(receiveErrors(error.responseJSON)));
 
 export const deleteMenuItem = (itemId, userId) => dispatch =>

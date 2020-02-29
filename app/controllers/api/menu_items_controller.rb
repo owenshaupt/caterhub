@@ -46,6 +46,11 @@ class Api::MenuItemsController < ApplicationController
   # def show
   # end
 
+  def filter
+    @menu_items = MenuItem.where("company_id = #{params['company']}")
+    render :filter
+  end
+
   private
 
   def menu_item_params

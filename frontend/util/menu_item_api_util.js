@@ -5,6 +5,13 @@ export const fetchMenuItems = () => {
   });
 };
 
+export const fetchSelectedMenuItems = company_id => {
+  return axios({
+    method: "get",
+    url: `/api/menu_items/filter?company=${company_id}`
+  });
+};
+
 // export const fetchMenuItem = id => {
 //   return $.ajax({
 //     url: `/api/items/${id}`
