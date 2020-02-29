@@ -18,6 +18,8 @@
 
 class Order < ApplicationRecord
   validates :contact_phone_number, length: {is: 10}
+
+  has_many :order_line_items
   
   has_many :order_modifiers
   has_many :modifiers,

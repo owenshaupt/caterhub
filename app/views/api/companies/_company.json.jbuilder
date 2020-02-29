@@ -1,1 +1,1 @@
-json.extract! company, :id, :name, :company_string, :menu_items
+json.extract! company, :id, :name, :company_string
