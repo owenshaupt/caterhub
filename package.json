@@ -26,7 +26,7 @@
     "serialize-javascript": "^2.1.2",
     "styled-components": "^4.4.1",
     "webpack": "^4.41.2",
-    "webpack-cli": "^3.3.10",
+    "webpack-cli": "^3.3.12",
     "yup": "^0.27.0"
   },
   "description": "This README would normally document whatever steps are necessary to get the application up and running.",
